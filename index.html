@@ -119,10 +119,25 @@
             border-color: var(--highlight-color);
         }
         
-        /* Meal repository styles */
+        /* Replace it with this */
         .meal-repo {
-            height: 300px;
-            overflow-y: auto;
+            /* Remove fixed height constraint to allow full expansion */
+            min-height: 300px;
+            height: auto;
+            margin-bottom: 50px; /* Add some space at the bottom of the page */
+            padding-bottom: 30px;
+        }
+        
+        /* Update the grid layout to show more items per row on larger screens */
+        .meals-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+        }
+        
+        /* Make sure there's good spacing at the bottom of the page */
+        body {
+            padding-bottom: 50px;
         }
         .search-container {
             position: relative;
@@ -514,7 +529,7 @@
             font-size: 20px;
         }
         
-        .meal-repo-header {
+        .-header {
             position: relative;
         }
         
