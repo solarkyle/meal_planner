@@ -1,434 +1,1716 @@
 {
   "meals": [
-    {
-      "id": "m1",
-      "name": "Power-Packed Oatmeal Bowl",
-      "image": "images/oatmeal-bowl.jpg",
-      "category": "breakfast",
-      "macros": {
-        "calories": 385,
-        "protein": 12,
-        "carbs": 52,
-        "fat": 16,
-        "fiber": 11
-      },
-      "ingredients": [
-        "1/2 cup steel-cut oats",
-        "1 cup unsweetened almond milk",
-        "1 tbsp ground flaxseed",
-        "1/2 banana, sliced",
-        "1/4 cup blueberries",
-        "1 tbsp almond butter",
-        "1 tsp cinnamon",
-        "1 tbsp honey (optional)"
-      ]
+  {
+    "id": "m1",
+    "name": "Power-Packed Oatmeal Bowl",
+    "image": "images/power-packed-oatmeal-bowl.jpg",
+    "category": "breakfast",
+    "macros": {
+      "calories": 385,
+      "protein": 12,
+      "carbs": 52,
+      "fat": 16,
+      "fiber": 11
     },
-    {
-      "id": "m2",
-      "name": "Veggie Egg Scramble",
-      "image": "images/egg-scramble.jpg",
-      "category": "breakfast",
-      "macros": {
-        "calories": 340,
-        "protein": 20,
-        "carbs": 9,
-        "fat": 25,
-        "fiber": 4
-      },
-      "ingredients": [
-        "3 large eggs",
-        "1/4 cup diced bell peppers",
-        "1/4 cup diced onions",
-        "1/2 cup spinach",
-        "1 tbsp olive oil",
-        "1/4 avocado, sliced",
-        "Salt and pepper to taste",
-        "1/4 tsp turmeric (optional)"
-      ]
+    "ingredients": [
+      "1/2 cup steel-cut oats",
+      "1 cup unsweetened almond milk",
+      "1 tbsp ground flaxseed",
+      "1/2 banana, sliced",
+      "1/4 cup blueberries",
+      "1 tbsp almond butter",
+      "1 tsp cinnamon",
+      "1 tbsp honey (optional)"
+    ]
+  },
+  {
+    "id": "m2",
+    "name": "Veggie Egg Scramble",
+    "image": "images/veggie-egg-scramble.jpg",
+    "category": "breakfast",
+    "macros": {
+      "calories": 340,
+      "protein": 20,
+      "carbs": 9,
+      "fat": 25,
+      "fiber": 4
     },
-    {
-      "id": "m3",
-      "name": "Greek Yogurt Parfait",
-      "image": "images/yogurt-parfait.jpg",
-      "category": "breakfast",
-      "macros": {
-        "calories": 310,
-        "protein": 25,
-        "carbs": 40,
-        "fat": 7,
-        "fiber": 8
-      },
-      "ingredients": [
-        "1 cup Greek yogurt (0% fat)",
-        "1/4 cup granola (no added sugar)",
-        "1/2 cup mixed berries",
-        "1 tbsp chia seeds",
-        "1 tbsp honey",
-        "1/4 tsp vanilla extract"
-      ]
+    "ingredients": [
+      "3 large eggs",
+      "1/4 cup diced bell peppers",
+      "1/4 cup diced onions",
+      "1/2 cup spinach",
+      "1 tbsp olive oil",
+      "1/4 avocado, sliced",
+      "Salt and pepper to taste",
+      "1/4 tsp turmeric (optional)"
+    ]
+  },
+  {
+    "id": "m3",
+    "name": "Greek Yogurt Parfait",
+    "image": "images/greek-yogurt-parfait.jpg",
+    "category": "breakfast",
+    "macros": {
+      "calories": 310,
+      "protein": 25,
+      "carbs": 40,
+      "fat": 7,
+      "fiber": 8
     },
-    {
-      "id": "m4",
-      "name": "Savory Breakfast Bowl",
-      "image": "images/breakfast-bowl.jpg",
-      "category": "breakfast",
-      "macros": {
-        "calories": 420,
-        "protein": 22,
-        "carbs": 45,
-        "fat": 18,
-        "fiber": 10
-      },
-      "ingredients": [
-        "1/2 cup cooked quinoa",
-        "2 soft-boiled eggs",
-        "1/4 avocado, sliced",
-        "2 tbsp salsa",
-        "1/4 cup black beans",
-        "1 tbsp chopped cilantro",
-        "Lime juice to taste"
-      ]
+    "ingredients": [
+      "1 cup Greek yogurt (0% fat)",
+      "1/4 cup granola (no added sugar)",
+      "1/2 cup mixed berries",
+      "1 tbsp chia seeds",
+      "1 tbsp honey",
+      "1/4 tsp vanilla extract"
+    ]
+  },
+  {
+    "id": "m4",
+    "name": "Savory Breakfast Bowl",
+    "image": "images/savory-breakfast-bowl.jpg",
+    "category": "breakfast",
+    "macros": {
+      "calories": 420,
+      "protein": 22,
+      "carbs": 45,
+      "fat": 18,
+      "fiber": 10
     },
-    {
-      "id": "m5",
-      "name": "Protein Pancakes",
-      "image": "images/protein-pancakes.jpg",
-      "category": "breakfast",
-      "macros": {
-        "calories": 390,
-        "protein": 28,
-        "carbs": 42,
-        "fat": 12,
-        "fiber": 6
-      },
-      "ingredients": [
-        "1 ripe banana",
-        "2 eggs",
-        "1/2 cup rolled oats",
-        "1 scoop vanilla protein powder",
-        "1/4 tsp cinnamon",
-        "1 tsp coconut oil for cooking",
-        "1/4 cup fresh berries for topping"
-      ]
+    "ingredients": [
+      "1/2 cup cooked quinoa",
+      "2 soft-boiled eggs",
+      "1/4 avocado, sliced",
+      "2 tbsp salsa",
+      "1/4 cup black beans",
+      "1 tbsp chopped cilantro",
+      "Lime juice to taste"
+    ]
+  },
+  {
+    "id": "m5",
+    "name": "Protein Pancakes",
+    "image": "images/protein-pancakes.jpg",
+    "category": "breakfast",
+    "macros": {
+      "calories": 390,
+      "protein": 28,
+      "carbs": 42,
+      "fat": 12,
+      "fiber": 6
     },
-    {
-      "id": "m18",
-      "name": "Grilled Chicken Salad",
-      "image": "images/chicken-salad.jpg",
-      "category": "lunch",
-      "macros": {
-        "calories": 320,
-        "protein": 35,
-        "carbs": 12,
-        "fat": 15,
-        "fiber": 7
-      },
-      "ingredients": [
-        "4 oz grilled chicken breast",
-        "2 cups mixed greens",
-        "1/4 cup cherry tomatoes",
-        "1/4 cup cucumber, sliced",
-        "1/4 cup bell peppers, diced",
-        "1/4 avocado, sliced",
-        "1 tbsp olive oil and lemon dressing",
-        "1 tbsp sunflower seeds"
-      ]
+    "ingredients": [
+      "1 ripe banana",
+      "2 eggs",
+      "1/2 cup rolled oats",
+      "1 scoop vanilla protein powder",
+      "1/4 tsp cinnamon",
+      "1 tsp coconut oil for cooking",
+      "1/4 cup fresh berries for topping"
+    ]
+  },
+  {
+    "id": "m6",
+    "name": "Smoked Salmon Toast",
+    "image": "images/smoked-salmon-toast.jpg",
+    "category": "breakfast",
+    "macros": {
+      "calories": 350,
+      "protein": 22,
+      "carbs": 30,
+      "fat": 16,
+      "fiber": 7
     },
-    {
-      "id": "m19",
-      "name": "Mediterranean Quinoa Bowl",
-      "image": "images/quinoa-bowl.jpg",
-      "category": "lunch",
-      "macros": {
-        "calories": 400,
-        "protein": 30,
-        "carbs": 35,
-        "fat": 16,
-        "fiber": 8
-      },
-      "ingredients": [
-        "1/2 cup cooked quinoa",
-        "3 oz grilled chicken or chickpeas",
-        "1/4 cup cucumber, diced",
-        "1/4 cup cherry tomatoes, halved",
-        "2 tbsp hummus",
-        "2 tbsp feta cheese",
-        "1 tbsp olive oil",
-        "1 tbsp lemon juice",
-        "Fresh herbs (mint, parsley)"
-      ]
+    "ingredients": [
+      "2 slices whole grain bread",
+      "2 oz smoked salmon",
+      "1 tbsp cream cheese (reduced fat)",
+      "1/4 avocado, sliced",
+      "Few slices of cucumber and red onion",
+      "1 tsp capers",
+      "Fresh dill",
+      "Lemon juice"
+    ]
+  },
+  {
+    "id": "m7",
+    "name": "Sweet Potato Hash",
+    "image": "images/sweet-potato-hash.jpg",
+    "category": "breakfast",
+    "macros": {
+      "calories": 370,
+      "protein": 16,
+      "carbs": 35,
+      "fat": 19,
+      "fiber": 6
     },
-    {
-      "id": "m20",
-      "name": "Salmon and Sweet Potato",
-      "image": "images/salmon-sweet-potato.jpg",
-      "category": "lunch",
-      "macros": {
-        "calories": 390,
-        "protein": 30,
-        "carbs": 28,
-        "fat": 18,
-        "fiber": 7
-      },
-      "ingredients": [
-        "4 oz baked salmon",
-        "1 small sweet potato, baked",
-        "1 cup steamed broccoli",
-        "1 tbsp olive oil",
-        "1 tsp lemon juice",
-        "Fresh herbs (dill, parsley)",
-        "Salt and pepper to taste"
-      ]
+    "ingredients": [
+      "1 medium sweet potato, diced",
+      "1/4 cup diced bell pepper",
+      "1/4 cup diced onion",
+      "2 eggs",
+      "1 tbsp olive oil",
+      "1 garlic clove, minced",
+      "1/4 tsp paprika",
+      "Fresh herbs (parsley, thyme)",
+      "Salt and pepper to taste"
+    ]
+  },
+  {
+    "id": "m8",
+    "name": "Chia Seed Pudding",
+    "image": "images/chia-seed-pudding.jpg",
+    "category": "breakfast",
+    "macros": {
+      "calories": 280,
+      "protein": 10,
+      "carbs": 30,
+      "fat": 15,
+      "fiber": 12
     },
-    {
-      "id": "m21",
-      "name": "Turkey and Avocado Wrap",
-      "image": "images/turkey-wrap.jpg",
-      "category": "lunch",
-      "macros": {
-        "calories": 350,
-        "protein": 25,
-        "carbs": 30,
-        "fat": 15,
-        "fiber": 8
-      },
-      "ingredients": [
-        "1 whole wheat tortilla",
-        "3 oz sliced turkey breast",
-        "1/4 avocado, sliced",
-        "1/4 cup shredded carrots",
-        "1/4 cup spinach",
-        "1 tbsp hummus",
-        "1 tsp Dijon mustard"
-      ]
+    "ingredients": [
+      "3 tbsp chia seeds",
+      "1 cup unsweetened almond milk",
+      "1 tbsp maple syrup",
+      "1/4 tsp vanilla extract",
+      "1/2 cup fresh berries",
+      "1 tbsp sliced almonds"
+    ]
+  },
+  {
+    "id": "m9",
+    "name": "Spinach and Feta Omelette",
+    "image": "images/spinach-and-feta-omelette.jpg",
+    "category": "breakfast",
+    "macros": {
+      "calories": 350,
+      "protein": 22,
+      "carbs": 6,
+      "fat": 26,
+      "fiber": 2
     },
-    {
-      "id": "m22",
-      "name": "Lentil Soup",
-      "image": "images/lentil-soup.jpg",
-      "category": "lunch",
-      "macros": {
-        "calories": 330,
-        "protein": 18,
-        "carbs": 45,
-        "fat": 8,
-        "fiber": 16
-      },
-      "ingredients": [
-        "1 cup cooked lentils",
-        "1/2 cup diced carrots",
-        "1/2 cup diced celery",
-        "1/4 cup diced onion",
-        "1 garlic clove, minced",
-        "2 cups vegetable broth",
-        "1 tbsp olive oil",
-        "1 tsp cumin",
-        "Fresh herbs (thyme, parsley)",
-        "Salt and pepper to taste"
-      ]
+    "ingredients": [
+      "3 large eggs",
+      "1 cup fresh spinach",
+      "2 tbsp crumbled feta",
+      "1 tbsp olive oil",
+      "1/4 cup diced tomatoes",
+      "Fresh herbs (basil, oregano)",
+      "Salt and pepper to taste"
+    ]
+  },
+  {
+    "id": "m10",
+    "name": "Breakfast Burrito Bowl",
+    "image": "images/breakfast-burrito-bowl.jpg",
+    "category": "breakfast",
+    "macros": {
+      "calories": 400,
+      "protein": 20,
+      "carbs": 45,
+      "fat": 16,
+      "fiber": 9
     },
-    {
-      "id": "m35",
-      "name": "Baked Cod with Roasted Vegetables",
-      "image": "images/baked-cod.jpg",
-      "category": "dinner",
-      "macros": {
-        "calories": 330,
-        "protein": 35,
-        "carbs": 15,
-        "fat": 14,
-        "fiber": 6
-      },
-      "ingredients": [
-        "5 oz cod fillet",
-        "1 cup mixed roasted vegetables (Brussels sprouts, carrots, red onion)",
-        "1 tbsp olive oil",
-        "1 lemon, juiced and zested",
-        "2 garlic cloves, minced",
-        "Fresh herbs (thyme, parsley)",
-        "Salt and pepper to taste"
-      ]
+    "ingredients": [
+      "1/2 cup cooked brown rice",
+      "1/4 cup black beans",
+      "2 eggs, scrambled",
+      "2 tbsp salsa",
+      "1/4 avocado, diced",
+      "1 tbsp Greek yogurt",
+      "1 tbsp chopped cilantro",
+      "Hot sauce (optional)"
+    ]
+  },
+  {
+    "id": "m11",
+    "name": "Tofu Scramble with Vegetables",
+    "image": "images/tofu-scramble-with-vegetables.jpg",
+    "category": "breakfast",
+    "macros": {
+      "calories": 250,
+      "protein": 15,
+      "carbs": 10,
+      "fat": 10,
+      "fiber": 4
     },
-    {
-      "id": "m36",
-      "name": "Turkey Meatballs with Zucchini Noodles",
-      "image": "images/turkey-meatballs.jpg",
-      "category": "dinner",
-      "macros": {
-        "calories": 360,
-        "protein": 35,
-        "carbs": 15,
-        "fat": 18,
-        "fiber": 5
-      },
-      "ingredients": [
-        "4 oz ground turkey (formed into meatballs)",
-        "2 cups spiralized zucchini",
-        "1/2 cup tomato sauce (no added sugar)",
-        "1 tbsp olive oil",
-        "1 garlic clove, minced",
-        "1 tbsp grated Parmesan",
-        "Fresh basil",
-        "Red pepper flakes (optional)"
-      ]
+    "ingredients": [
+      "6 oz firm tofu, crumbled",
+      "1/4 cup bell peppers, diced",
+      "1/4 cup onions, diced",
+      "1/2 cup spinach",
+      "1 tbsp olive oil",
+      "1/4 tsp turmeric",
+      "1 tsp nutritional yeast",
+      "Salt and pepper to taste"
+    ]
+  },
+  {
+    "id": "m12",
+    "name": "Cottage Cheese with Pineapple and Almonds",
+    "image": "images/cottage-cheese-with-pineapple-and-almonds.jpg",
+    "category": "breakfast",
+    "macros": {
+      "calories": 280,
+      "protein": 25,
+      "carbs": 20,
+      "fat": 10,
+      "fiber": 2
     },
-    {
-      "id": "m37",
-      "name": "Grilled Steak with Sweet Potato",
-      "image": "images/steak-sweet-potato.jpg",
-      "category": "dinner",
-      "macros": {
-        "calories": 420,
-        "protein": 35,
-        "carbs": 30,
-        "fat": 18,
-        "fiber": 7
-      },
-      "ingredients": [
-        "4 oz lean steak (sirloin or flank)",
-        "1 small sweet potato, baked",
-        "1 cup steamed asparagus",
-        "1 tbsp olive oil",
-        "1 garlic clove, minced",
-        "Fresh herbs (rosemary, thyme)",
-        "Salt and pepper to taste"
-      ]
+    "ingredients": [
+      "1 cup cottage cheese (2% fat)",
+      "1/2 cup pineapple chunks",
+      "1 tbsp sliced almonds",
+      "1/4 tsp vanilla extract",
+      "Dash of cinnamon"
+    ]
+  },
+  {
+    "id": "m13",
+    "name": "High-Protein Overnight Oats",
+    "image": "images/high-protein-overnight-oats.jpg",
+    "category": "breakfast",
+    "macros": {
+      "calories": 312,
+      "protein": 18,
+      "carbs": 45,
+      "fat": 8,
+      "fiber": 8
     },
-    {
-      "id": "m38",
-      "name": "Baked Salmon with Quinoa",
-      "image": "images/salmon-quinoa.jpg",
-      "category": "dinner",
-      "macros": {
-        "calories": 450,
-        "protein": 40,
-        "carbs": 25,
-        "fat": 22,
-        "fiber": 7
-      },
-      "ingredients": [
-        "5 oz salmon fillet",
-        "1/2 cup cooked quinoa",
-        "1 cup roasted Brussels sprouts",
-        "1 tbsp olive oil",
-        "1 lemon, juiced",
-        "1 garlic clove, minced",
-        "Fresh dill",
-        "Salt and pepper to taste"
-      ]
+    "ingredients": [
+      "1/2 cup rolled oats",
+      "1/2 cup unsweetened almond milk",
+      "1/4 cup Greek yogurt",
+      "1 tbsp chia seeds",
+      "1/2 mashed banana",
+      "1 tbsp honey",
+      "1/4 tsp vanilla extract"
+    ]
+  },
+  {
+    "id": "m14",
+    "name": "Black Bean Breakfast Tacos",
+    "image": "images/black-bean-breakfast-tacos.jpg",
+    "category": "breakfast",
+    "macros": {
+      "calories": 342,
+      "protein": 19,
+      "carbs": 45,
+      "fat": 12,
+      "fiber": 11
     },
-    {
-      "id": "m39",
-      "name": "Chicken and Vegetable Curry",
-      "image": "images/chicken-curry.jpg",
-      "category": "dinner",
-      "macros": {
-        "calories": 420,
-        "protein": 35,
-        "carbs": 40,
-        "fat": 15,
-        "fiber": 10
-      },
-      "ingredients": [
-        "4 oz chicken breast, cubed",
-        "1/2 cup chickpeas",
-        "1 cup mixed vegetables (cauliflower, peas, carrots)",
-        "1/2 cup coconut milk (light)",
-        "1 tbsp curry powder",
-        "1 garlic clove, minced",
-        "1 tsp ginger, grated",
-        "1/4 cup brown rice, cooked",
-        "Fresh cilantro"
-      ]
+    "ingredients": [
+      "2 corn tortillas",
+      "1/2 cup black beans, mashed",
+      "1 scrambled egg",
+      "2 tbsp salsa",
+      "1/4 avocado, sliced",
+      "1 tbsp cilantro",
+      "Lime juice to taste"
+    ]
+  },
+  {
+    "id": "m15",
+    "name": "Breakfast Burrito",
+    "image": "images/breakfast-burrito.jpg",
+    "category": "breakfast",
+    "macros": {
+      "calories": 420,
+      "protein": 20,
+      "carbs": 40,
+      "fat": 15,
+      "fiber": 8
     },
-    {
-      "id": "m52",
-      "name": "Greek Yogurt with Berries",
-      "image": "images/yogurt-berries.jpg",
-      "category": "snack",
-      "macros": {
-        "calories": 150,
-        "protein": 15,
-        "carbs": 15,
-        "fat": 4,
-        "fiber": 3
-      },
-      "ingredients": [
-        "1/2 cup Greek yogurt (0% fat)",
-        "1/4 cup mixed berries",
-        "1 tsp honey",
-        "1 tbsp chopped almonds"
-      ]
+    "ingredients": [
+      "1 whole grain tortilla",
+      "2 eggs, scrambled",
+      "1/4 cup black beans",
+      "2 tbsp salsa",
+      "1/4 avocado",
+      "1 tbsp Greek yogurt",
+      "Fresh cilantro"
+    ]
+  },
+  {
+    "id": "m16",
+    "name": "Chickpea Flour Pancakes",
+    "image": "images/chickpea-flour-pancakes.jpg",
+    "category": "breakfast",
+    "macros": {
+      "calories": 300,
+      "protein": 12,
+      "carbs": 35,
+      "fat": 12,
+      "fiber": 8
     },
-    {
-      "id": "m53",
-      "name": "Apple with Almond Butter",
-      "image": "images/apple-almond-butter.jpg",
-      "category": "snack",
-      "macros": {
-        "calories": 170,
-        "protein": 4,
-        "carbs": 25,
-        "fat": 8,
-        "fiber": 5
-      },
-      "ingredients": [
-        "1 medium apple, sliced",
-        "1 tbsp almond butter",
-        "Dash of cinnamon"
-      ]
+    "ingredients": [
+      "1/2 cup chickpea flour",
+      "1/2 cup water",
+      "1 tbsp olive oil",
+      "1/4 tsp turmeric",
+      "1/4 cup diced vegetables (tomatoes, spinach, onions)",
+      "Fresh herbs",
+      "Salt and pepper to taste"
+    ]
+  },
+  {
+    "id": "m17",
+    "name": "Egg Muffins with Vegetables",
+    "image": "images/egg-muffins-with-vegetables.jpg",
+    "category": "breakfast",
+    "macros": {
+      "calories": 250,
+      "protein": 20,
+      "carbs": 5,
+      "fat": 15,
+      "fiber": 1
     },
-    {
-      "id": "m54",
-      "name": "Vegetable Crudités with Hummus",
-      "image": "images/veggie-hummus.jpg",
-      "category": "snack",
-      "macros": {
-        "calories": 120,
-        "protein": 5,
-        "carbs": 15,
-        "fat": 5,
-        "fiber": 6
-      },
-      "ingredients": [
-        "1 cup mixed raw vegetables (carrots, cucumber, bell peppers)",
-        "2 tbsp hummus"
-      ]
+    "ingredients": [
+      "3 large eggs",
+      "1/4 cup bell peppers, diced",
+      "1/4 cup spinach, chopped",
+      "2 tbsp onions, diced",
+      "1 tbsp grated cheese",
+      "Salt and pepper to taste"
+    ]
+  },
+  {
+    "id": "m18",
+    "name": "Grilled Chicken Salad",
+    "image": "images/grilled-chicken-salad.jpg",
+    "category": "lunch",
+    "macros": {
+      "calories": 320,
+      "protein": 35,
+      "carbs": 12,
+      "fat": 15,
+      "fiber": 7
     },
-    {
-      "id": "m55",
-      "name": "Hard-Boiled Eggs",
-      "image": "images/hard-boiled-eggs.jpg",
-      "category": "snack",
-      "macros": {
-        "calories": 140,
-        "protein": 12,
-        "carbs": 1,
-        "fat": 10,
-        "fiber": 0
-      },
-      "ingredients": [
-        "2 hard-boiled eggs",
-        "Pinch of salt and pepper",
-        "Dash of paprika"
-      ]
+    "ingredients": [
+      "4 oz grilled chicken breast",
+      "2 cups mixed greens",
+      "1/4 cup cherry tomatoes",
+      "1/4 cup cucumber, sliced",
+      "1/4 cup bell peppers, diced",
+      "1/4 avocado, sliced",
+      "1 tbsp olive oil and lemon dressing",
+      "1 tbsp sunflower seeds"
+    ]
+  },
+  {
+    "id": "m19",
+    "name": "Mediterranean Quinoa Bowl",
+    "image": "images/mediterranean-quinoa-bowl.jpg",
+    "category": "lunch",
+    "macros": {
+      "calories": 400,
+      "protein": 30,
+      "carbs": 35,
+      "fat": 16,
+      "fiber": 8
     },
-    {
-      "id": "m56",
-      "name": "Cottage Cheese with Pineapple",
-      "image": "images/cottage-cheese-pineapple.jpg",
-      "category": "snack",
-      "macros": {
-        "calories": 130,
-        "protein": 15,
-        "carbs": 10,
-        "fat": 2.5,
-        "fiber": 1
-      },
-      "ingredients": [
-        "1/2 cup cottage cheese (2% fat)",
-        "1/4 cup diced pineapple"
-      ]
-    }
-  ]
+    "ingredients": [
+      "1/2 cup cooked quinoa",
+      "3 oz grilled chicken or chickpeas",
+      "1/4 cup cucumber, diced",
+      "1/4 cup cherry tomatoes, halved",
+      "2 tbsp hummus",
+      "2 tbsp feta cheese",
+      "1 tbsp olive oil",
+      "1 tbsp lemon juice",
+      "Fresh herbs (mint, parsley)"
+    ]
+  },
+  {
+    "id": "m20",
+    "name": "Salmon and Sweet Potato",
+    "image": "images/salmon-and-sweet-potato.jpg",
+    "category": "lunch",
+    "macros": {
+      "calories": 390,
+      "protein": 30,
+      "carbs": 28,
+      "fat": 18,
+      "fiber": 7
+    },
+    "ingredients": [
+      "4 oz baked salmon",
+      "1 small sweet potato, baked",
+      "1 cup steamed broccoli",
+      "1 tbsp olive oil",
+      "1 tsp lemon juice",
+      "Fresh herbs (dill, parsley)",
+      "Salt and pepper to taste"
+    ]
+  },
+  {
+    "id": "m21",
+    "name": "Turkey and Avocado Wrap",
+    "image": "images/turkey-and-avocado-wrap.jpg",
+    "category": "lunch",
+    "macros": {
+      "calories": 350,
+      "protein": 25,
+      "carbs": 30,
+      "fat": 15,
+      "fiber": 8
+    },
+    "ingredients": [
+      "1 whole wheat tortilla",
+      "3 oz sliced turkey breast",
+      "1/4 avocado, sliced",
+      "1/4 cup shredded carrots",
+      "1/4 cup spinach",
+      "1 tbsp hummus",
+      "1 tsp Dijon mustard"
+    ]
+  },
+  {
+    "id": "m22",
+    "name": "Lentil Soup",
+    "image": "images/lentil-soup.jpg",
+    "category": "lunch",
+    "macros": {
+      "calories": 330,
+      "protein": 18,
+      "carbs": 45,
+      "fat": 8,
+      "fiber": 16
+    },
+    "ingredients": [
+      "1 cup cooked lentils",
+      "1/2 cup diced carrots",
+      "1/2 cup diced celery",
+      "1/4 cup diced onion",
+      "1 garlic clove, minced",
+      "2 cups vegetable broth",
+      "1 tbsp olive oil",
+      "1 tsp cumin",
+      "Fresh herbs (thyme, parsley)",
+      "Salt and pepper to taste"
+    ]
+  },
+  {
+    "id": "m23",
+    "name": "Tuna Nicoise Salad",
+    "image": "images/tuna-nicoise-salad.jpg",
+    "category": "lunch",
+    "macros": {
+      "calories": 380,
+      "protein": 35,
+      "carbs": 20,
+      "fat": 16,
+      "fiber": 6
+    },
+    "ingredients": [
+      "4 oz canned tuna in water",
+      "1 hard-boiled egg, sliced",
+      "1 cup green beans, blanched",
+      "1/4 cup cherry tomatoes",
+      "1/4 cup olives",
+      "1 small potato, boiled and diced",
+      "1 tbsp olive oil and lemon dressing",
+      "Fresh herbs (basil, parsley)"
+    ]
+  },
+  {
+    "id": "m24",
+    "name": "Chicken and Veggie Stir-Fry",
+    "image": "images/chicken-and-veggie-stir-fry.jpg",
+    "category": "lunch",
+    "macros": {
+      "calories": 370,
+      "protein": 35,
+      "carbs": 35,
+      "fat": 10,
+      "fiber": 6
+    },
+    "ingredients": [
+      "4 oz chicken breast, sliced",
+      "1 cup mixed vegetables (broccoli, bell peppers, snap peas)",
+      "1/2 cup cooked brown rice",
+      "1 tsp sesame oil",
+      "1 tbsp low-sodium soy sauce",
+      "1 garlic clove, minced",
+      "1 tsp ginger, grated",
+      "1 tsp sriracha (optional)"
+    ]
+  },
+  {
+    "id": "m25",
+    "name": "Chickpea and Vegetable Bowl",
+    "image": "images/chickpea-and-vegetable-bowl.jpg",
+    "category": "lunch",
+    "macros": {
+      "calories": 340,
+      "protein": 15,
+      "carbs": 45,
+      "fat": 12,
+      "fiber": 13
+    },
+    "ingredients": [
+      "1/2 cup chickpeas",
+      "1 cup roasted vegetables (zucchini, bell peppers, cauliflower)",
+      "1/4 cup quinoa, cooked",
+      "1 tbsp tahini",
+      "1 tsp lemon juice",
+      "1 garlic clove, minced",
+      "Fresh herbs (parsley, mint)",
+      "Salt and pepper to taste"
+    ]
+  },
+  {
+    "id": "m26",
+    "name": "Beef and Vegetable Soup",
+    "image": "images/beef-and-vegetable-soup.jpg",
+    "category": "lunch",
+    "macros": {
+      "calories": 310,
+      "protein": 30,
+      "carbs": 20,
+      "fat": 12,
+      "fiber": 6
+    },
+    "ingredients": [
+      "3 oz lean beef, cubed",
+      "1/2 cup diced carrots",
+      "1/2 cup diced celery",
+      "1/4 cup diced onion",
+      "1/2 cup diced tomatoes",
+      "2 cups beef broth (low-sodium)",
+      "1 garlic clove, minced",
+      "Fresh herbs (bay leaf, thyme)",
+      "Salt and pepper to taste"
+    ]
+  },
+  {
+    "id": "m27",
+    "name": "Shrimp and Mango Salad",
+    "image": "images/shrimp-and-mango-salad.jpg",
+    "category": "lunch",
+    "macros": {
+      "calories": 300,
+      "protein": 25,
+      "carbs": 20,
+      "fat": 14,
+      "fiber": 7
+    },
+    "ingredients": [
+      "4 oz cooked shrimp",
+      "2 cups mixed greens",
+      "1/2 mango, diced",
+      "1/4 avocado, sliced",
+      "1/4 cup cucumber, diced",
+      "1 tbsp olive oil and lime dressing",
+      "Fresh cilantro",
+      "Red pepper flakes (optional)"
+    ]
+  },
+  {
+    "id": "m28",
+    "name": "Rotisserie Chicken Power Bowl",
+    "image": "images/rotisserie-chicken-power-bowl.jpg",
+    "category": "lunch",
+    "macros": {
+      "calories": 487,
+      "protein": 42,
+      "carbs": 38,
+      "fat": 18,
+      "fiber": 8
+    },
+    "ingredients": [
+      "4 oz rotisserie chicken",
+      "1/2 cup quinoa",
+      "1 cup roasted broccoli",
+      "1/4 avocado",
+      "2 tbsp tahini dressing",
+      "1 tsp lemon juice",
+      "Fresh herbs"
+    ]
+  },
+  {
+    "id": "m29",
+    "name": "White Bean & Tuna Salad",
+    "image": "images/white-bean-&-tuna-salad.jpg",
+    "category": "lunch",
+    "macros": {
+      "calories": 398,
+      "protein": 39,
+      "carbs": 28,
+      "fat": 14,
+      "fiber": 8
+    },
+    "ingredients": [
+      "5 oz canned tuna in water",
+      "1/2 cup cannellini beans",
+      "1 cup mixed greens",
+      "10 cherry tomatoes",
+      "1 tbsp olive oil",
+      "1 tbsp lemon juice",
+      "Fresh herbs",
+      "Salt and pepper to taste"
+    ]
+  },
+  {
+    "id": "m30",
+    "name": "Blackened Tilapia Tacos",
+    "image": "images/blackened-tilapia-tacos.jpg",
+    "category": "lunch",
+    "macros": {
+      "calories": 320,
+      "protein": 30,
+      "carbs": 28,
+      "fat": 10,
+      "fiber": 5
+    },
+    "ingredients": [
+      "4 oz tilapia fillet",
+      "2 corn tortillas",
+      "1/4 cup shredded cabbage",
+      "2 tbsp pico de gallo",
+      "2 tbsp Greek yogurt",
+      "1/4 lime, juiced",
+      "1 tsp blackened seasoning",
+      "Cilantro for garnish"
+    ]
+  },
+  {
+    "id": "m31",
+    "name": "Buffalo Chicken Lettuce Wraps",
+    "image": "images/buffalo-chicken-lettuce-wraps.jpg",
+    "category": "lunch",
+    "macros": {
+      "calories": 270,
+      "protein": 35,
+      "carbs": 8,
+      "fat": 12,
+      "fiber": 3
+    },
+    "ingredients": [
+      "4 oz shredded chicken",
+      "1 tbsp hot sauce",
+      "4 large romaine lettuce leaves",
+      "1/4 cup diced celery",
+      "1/4 cup diced carrots",
+      "2 tbsp Greek yogurt blue cheese dressing",
+      "1 green onion, sliced"
+    ]
+  },
+  {
+    "id": "m32",
+    "name": "Vegetarian Buddha Bowl",
+    "image": "images/vegetarian-buddha-bowl.jpg",
+    "category": "lunch",
+    "macros": {
+      "calories": 450,
+      "protein": 15,
+      "carbs": 60,
+      "fat": 18,
+      "fiber": 14
+    },
+    "ingredients": [
+      "1/2 cup quinoa",
+      "1/2 cup roasted chickpeas",
+      "1/2 cup roasted sweet potato",
+      "1/2 cup steamed broccoli",
+      "1/4 avocado",
+      "1 tbsp tahini",
+      "1/2 tbsp lemon juice",
+      "Fresh herbs"
+    ]
+  },
+  {
+    "id": "m33",
+    "name": "Chicken & Hummus Flatbread",
+    "image": "images/chicken-&-hummus-flatbread.jpg",
+    "category": "lunch",
+    "macros": {
+      "calories": 412,
+      "protein": 34,
+      "carbs": 42,
+      "fat": 12,
+      "fiber": 8
+    },
+    "ingredients": [
+      "1 whole-grain flatbread",
+      "3 oz grilled chicken",
+      "3 tbsp hummus",
+      "1/4 cup shredded carrots",
+      "1/4 cup cucumber slices",
+      "1/4 cup mixed greens",
+      "1 tsp olive oil",
+      "Fresh herbs"
+    ]
+  },
+  {
+    "id": "m34",
+    "name": "Sardine Pasta Salad",
+    "image": "images/sardine-pasta-salad.jpg",
+    "category": "lunch",
+    "macros": {
+      "calories": 380,
+      "protein": 25,
+      "carbs": 30,
+      "fat": 18,
+      "fiber": 6
+    },
+    "ingredients": [
+      "2 oz whole-grain pasta, cooked",
+      "3 oz canned sardines in olive oil",
+      "1/2 cup cherry tomatoes",
+      "1/4 cup diced cucumber",
+      "2 tbsp diced red onion",
+      "1 tbsp lemon juice",
+      "1 tbsp fresh parsley",
+      "Salt and pepper to taste"
+    ]
+  },
+  {
+    "id": "m35",
+    "name": "Baked Cod with Roasted Vegetables",
+    "image": "images/baked-cod-with-roasted-vegetables.jpg",
+    "category": "dinner",
+    "macros": {
+      "calories": 330,
+      "protein": 35,
+      "carbs": 15,
+      "fat": 14,
+      "fiber": 6
+    },
+    "ingredients": [
+      "5 oz cod fillet",
+      "1 cup mixed roasted vegetables (Brussels sprouts, carrots, red onion)",
+      "1 tbsp olive oil",
+      "1 lemon, juiced and zested",
+      "2 garlic cloves, minced",
+      "Fresh herbs (thyme, parsley)",
+      "Salt and pepper to taste"
+    ]
+  },
+  {
+    "id": "m36",
+    "name": "Turkey Meatballs with Zucchini Noodles",
+    "image": "images/turkey-meatballs-with-zucchini-noodles.jpg",
+    "category": "dinner",
+    "macros": {
+      "calories": 360,
+      "protein": 35,
+      "carbs": 15,
+      "fat": 18,
+      "fiber": 5
+    },
+    "ingredients": [
+      "4 oz ground turkey (formed into meatballs)",
+      "2 cups spiralized zucchini",
+      "1/2 cup tomato sauce (no added sugar)",
+      "1 tbsp olive oil",
+      "1 garlic clade, minced",
+      "1 tbsp grated Parmesan",
+      "Fresh basil",
+      "Red pepper flakes (optional)"
+    ]
+  },
+  {
+    "id": "m37",
+    "name": "Grilled Steak with Sweet Potato",
+    "image": "images/grilled-steak-with-sweet-potato.jpg",
+    "category": "dinner",
+    "macros": {
+      "calories": 420,
+      "protein": 35,
+      "carbs": 30,
+      "fat": 18,
+      "fiber": 7
+    },
+    "ingredients": [
+      "4 oz lean steak (sirloin or flank)",
+      "1 small sweet potato, baked",
+      "1 cup steamed asparagus",
+      "1 tbsp olive oil",
+      "1 garlic clove, minced",
+      "Fresh herbs (rosemary, thyme)",
+      "Salt and pepper to taste"
+    ]
+  },
+  {
+    "id": "m38",
+    "name": "Baked Salmon with Quinoa",
+    "image": "images/baked-salmon-with-quinoa.jpg",
+    "category": "dinner",
+    "macros": {
+      "calories": 450,
+      "protein": 40,
+      "carbs": 25,
+      "fat": 22,
+      "fiber": 7
+    },
+    "ingredients": [
+      "5 oz salmon fillet",
+      "1/2 cup cooked quinoa",
+      "1 cup roasted Brussels sprouts",
+      "1 tbsp olive oil",
+      "1 lemon, juiced",
+      "1 garlic clove, minced",
+      "Fresh dill",
+      "Salt and pepper to taste"
+    ]
+  },
+  {
+    "id": "m39",
+    "name": "Chicken and Vegetable Curry",
+    "image": "images/chicken-and-vegetable-curry.jpg",
+    "category": "dinner",
+    "macros": {
+      "calories": 420,
+      "protein": 35,
+      "carbs": 40,
+      "fat": 15,
+      "fiber": 10
+    },
+    "ingredients": [
+      "4 oz chicken breast, cubed",
+      "1/2 cup chickpeas",
+      "1 cup mixed vegetables (cauliflower, peas, carrots)",
+      "1/2 cup coconut milk (light)",
+      "1 tbsp curry powder",
+      "1 garlic clove, minced",
+      "1 tsp ginger, grated",
+      "1/4 cup brown rice, cooked",
+      "Fresh cilantro"
+    ]
+  },
+  {
+    "id": "m40",
+    "name": "Tofu Stir-Fry with Brown Rice",
+    "image": "images/tofu-stir-fry-with-brown-rice.jpg",
+    "category": "dinner",
+    "macros": {
+      "calories": 380,
+      "protein": 25,
+      "carbs": 40,
+      "fat": 15,
+      "fiber": 8
+    },
+    "ingredients": [
+      "5 oz firm tofu, cubed",
+      "1 cup mixed vegetables (broccoli, bell peppers, mushrooms)",
+      "1/2 cup cooked brown rice",
+      "1 tbsp low-sodium soy sauce",
+      "1 tsp sesame oil",
+      "1 garlic clove, minced",
+      "1 tsp ginger, grated",
+      "1 tsp sriracha (optional)",
+      "Sesame seeds for garnish"
+    ]
+  },
+  {
+    "id": "m41",
+    "name": "Lamb Chops with Roasted Vegetables",
+    "image": "images/lamb-chops-with-roasted-vegetables.jpg",
+    "category": "dinner",
+    "macros": {
+      "calories": 400,
+      "protein": 35,
+      "carbs": 15,
+      "fat": 22,
+      "fiber": 6
+    },
+    "ingredients": [
+      "4 oz lamb chops (trimmed)",
+      "1 cup roasted Mediterranean vegetables (eggplant, zucchini, bell peppers)",
+      "1 tbsp olive oil",
+      "1 garlic clove, minced",
+      "Fresh herbs (rosemary, thyme)",
+      "1/2 lemon, juiced",
+      "Salt and pepper to taste"
+    ]
+  },
+  {
+    "id": "m42",
+    "name": "Turkey and Vegetable Stuffed Peppers",
+    "image": "images/turkey-and-vegetable-stuffed-peppers.jpg",
+    "category": "dinner",
+    "macros": {
+      "calories": 360,
+      "protein": 30,
+      "carbs": 35,
+      "fat": 12,
+      "fiber": 9
+    },
+    "ingredients": [
+      "4 oz ground turkey",
+      "1 large bell pepper, halved and seeded",
+      "1/4 cup cooked brown rice",
+      "1/4 cup black beans",
+      "1/4 cup corn",
+      "1/4 cup diced tomatoes",
+      "1 garlic clove, minced",
+      "1 tsp cumin",
+      "Fresh cilantro",
+      "1 tbsp shredded cheese (optional)"
+    ]
+  },
+  {
+    "id": "m43",
+    "name": "Grilled White Fish with Cauliflower Mash",
+    "image": "images/grilled-white-fish-with-cauliflower-mash.jpg",
+    "category": "dinner",
+    "macros": {
+      "calories": 320,
+      "protein": 40,
+      "carbs": 10,
+      "fat": 15,
+      "fiber": 5
+    },
+    "ingredients": [
+      "5 oz white fish (cod, halibut, tilapia)",
+      "1 cup cauliflower, steamed and mashed",
+      "1 tbsp olive oil",
+      "1 garlic clove, minced",
+      "1 tbsp Greek yogurt (for mash)",
+      "1 cup sautéed spinach",
+      "1/2 lemon, juiced",
+      "Fresh herbs (parsley, dill)",
+      "Salt and pepper to taste"
+    ]
+  },
+  {
+    "id": "m44",
+    "name": "Vegetarian Chili",
+    "image": "images/vegetarian-chili.jpg",
+    "category": "dinner",
+    "macros": {
+      "calories": 340,
+      "protein": 20,
+      "carbs": 55,
+      "fat": 5,
+      "fiber": 17
+    },
+    "ingredients": [
+      "1/2 cup mixed beans (black beans, kidney beans)",
+      "1/4 cup lentils",
+      "1/2 cup diced tomatoes",
+      "1/4 cup diced bell peppers",
+      "1/4 cup diced onion",
+      "1 garlic clove, minced",
+      "1 tsp cumin",
+      "1 tsp chili powder",
+      "1 tsp paprika",
+      "Fresh cilantro",
+      "1 tbsp Greek yogurt (for topping)"
+    ]
+  },
+  {
+    "id": "m45",
+    "name": "Sheet Pan Lemon Garlic Cod",
+    "image": "images/sheet-pan-lemon-garlic-cod.jpg",
+    "category": "dinner",
+    "macros": {
+      "calories": 422,
+      "protein": 38,
+      "carbs": 35,
+      "fat": 14,
+      "fiber": 6
+    },
+    "ingredients": [
+      "6 oz cod fillet",
+      "1 cup green beans",
+      "1/2 lb baby potatoes",
+      "1 tbsp olive oil",
+      "1 lemon, zested and juiced",
+      "2 garlic cloves, minced",
+      "Fresh herbs (thyme, parsley)",
+      "Salt and pepper to taste"
+    ]
+  },
+  {
+    "id": "m46",
+    "name": "Chicken & Black Bean Chili",
+    "image": "images/chicken-&-black-bean-chili.jpg",
+    "category": "dinner",
+    "macros": {
+      "calories": 487,
+      "protein": 42,
+      "carbs": 45,
+      "fat": 12,
+      "fiber": 15
+    },
+    "ingredients": [
+      "6 oz ground chicken",
+      "1 cup black beans",
+      "1 cup diced tomatoes",
+      "1/2 cup corn",
+      "1/4 cup diced onion",
+      "1 garlic clove, minced",
+      "1 tbsp chili powder",
+      "1 tsp cumin",
+      "Fresh cilantro",
+      "1 tbsp Greek yogurt (optional)"
+    ]
+  },
+  {
+    "id": "m47",
+    "name": "Pork Tenderloin with Apple Slaw",
+    "image": "images/pork-tenderloin-with-apple-slaw.jpg",
+    "category": "dinner",
+    "macros": {
+      "calories": 340,
+      "protein": 30,
+      "carbs": 20,
+      "fat": 12,
+      "fiber": 5
+    },
+    "ingredients": [
+      "4 oz pork tenderloin, roasted",
+      "1 cup shredded cabbage",
+      "1/2 apple, julienned",
+      "1/4 cup shredded carrots",
+      "1 tbsp apple cider vinegar",
+      "1 tsp honey",
+      "1 tsp Dijon mustard",
+      "Fresh herbs",
+      "Salt and pepper to taste"
+    ]
+  },
+  {
+    "id": "m48",
+    "name": "Stuffed Bell Peppers with Quinoa and Black Beans",
+    "image": "images/stuffed-bell-peppers-with-quinoa-and-black-beans.jpg",
+    "category": "dinner",
+    "macros": {
+      "calories": 380,
+      "protein": 15,
+      "carbs": 50,
+      "fat": 5,
+      "fiber": 12
+    },
+    "ingredients": [
+      "2 bell peppers, halved and seeded",
+      "1/2 cup cooked quinoa",
+      "1/2 cup black beans",
+      "1/4 cup corn",
+      "1/4 cup diced tomatoes",
+      "2 tbsp salsa",
+      "1 tsp cumin",
+      "1 tsp chili powder",
+      "1 tbsp cilantro",
+      "1 tbsp shredded cheese (optional)"
+    ]
+  },
+  {
+    "id": "m49",
+    "name": "Beef and Broccoli Stir-Fry",
+    "image": "images/beef-and-broccoli-stir-fry.jpg",
+    "category": "dinner",
+    "macros": {
+      "calories": 390,
+      "protein": 30,
+      "carbs": 35,
+      "fat": 15,
+      "fiber": 8
+    },
+    "ingredients": [
+      "4 oz lean beef, sliced",
+      "2 cups broccoli florets",
+      "1/2 cup sliced carrots",
+      "1/2 cup cooked brown rice",
+      "1 tbsp low-sodium soy sauce",
+      "1 tsp sesame oil",
+      "1 garlic clove, minced",
+      "1 tsp ginger, grated",
+      "1 tsp cornstarch (optional, for sauce)"
+    ]
+  },
+  {
+    "id": "m50",
+    "name": "White Bean Stew",
+    "image": "images/white-bean-stew.jpg",
+    "category": "dinner",
+    "macros": {
+      "calories": 320,
+      "protein": 18,
+      "carbs": 45,
+      "fat": 10,
+      "fiber": 15
+    },
+    "ingredients": [
+      "1 cup cannellini beans",
+      "1/2 cup diced tomatoes",
+      "1/4 cup diced carrots",
+      "1/4 cup diced celery",
+      "1/4 cup diced onion",
+      "1 garlic clove, minced",
+      "1 cup vegetable broth",
+      "1 tbsp olive oil",
+      "Fresh herbs (rosemary, thyme)",
+      "Salt and pepper to taste"
+    ]
+  },
+  {
+    "id": "m51",
+    "name": "Baked Pesto Chicken Thighs",
+    "image": "images/baked-pesto-chicken-thighs.jpg",
+    "category": "dinner",
+    "macros": {
+      "calories": 390,
+      "protein": 35,
+      "carbs": 12,
+      "fat": 22,
+      "fiber": 4
+    },
+    "ingredients": [
+      "5 oz chicken thighs (boneless, skinless)",
+      "2 tbsp pesto (homemade or low-sodium)",
+      "1 cup roasted cherry tomatoes",
+      "1/2 cup roasted zucchini",
+      "1 garlic clove, minced",
+      "1 tsp olive oil",
+      "Fresh basil",
+      "Salt and pepper to taste"
+    ]
+  },
+  {
+    "id": "m52",
+    "name": "Greek Yogurt with Berries",
+    "image": "images/greek-yogurt-with-berries.jpg",
+    "category": "snack",
+    "macros": {
+      "calories": 150,
+      "protein": 15,
+      "carbs": 15,
+      "fat": 4,
+      "fiber": 3
+    },
+    "ingredients": [
+      "1/2 cup Greek yogurt (0% fat)",
+      "1/4 cup mixed berries",
+      "1 tsp honey",
+      "1 tbsp chopped almonds"
+    ]
+  },
+  {
+    "id": "m53",
+    "name": "Apple with Almond Butter",
+    "image": "images/apple-with-almond-butter.jpg",
+    "category": "snack",
+    "macros": {
+      "calories": 170,
+      "protein": 4,
+      "carbs": 25,
+      "fat": 8,
+      "fiber": 5
+    },
+    "ingredients": [
+      "1 medium apple, sliced",
+      "1 tbsp almond butter",
+      "Dash of cinnamon"
+    ]
+  },
+  {
+    "id": "m54",
+    "name": "Vegetable Crudités with Hummus",
+    "image": "images/vegetable-crudités-with-hummus.jpg",
+    "category": "snack",
+    "macros": {
+      "calories": 120,
+      "protein": 5,
+      "carbs": 15,
+      "fat": 5,
+      "fiber": 6
+    },
+    "ingredients": [
+      "1 cup mixed raw vegetables (carrots, cucumber, bell peppers)",
+      "2 tbsp hummus"
+    ]
+  },
+  {
+    "id": "m55",
+    "name": "Hard-Boiled Eggs",
+    "image": "images/hard-boiled-eggs.jpg",
+    "category": "snack",
+    "macros": {
+      "calories": 140,
+      "protein": 12,
+      "carbs": 1,
+      "fat": 10,
+      "fiber": 0
+    },
+    "ingredients": [
+      "2 hard-boiled eggs",
+      "Pinch of salt and pepper",
+      "Dash of paprika"
+    ]
+  },
+  {
+    "id": "m56",
+    "name": "Cottage Cheese with Pineapple",
+    "image": "images/cottage-cheese-with-pineapple.jpg",
+    "category": "snack",
+    "macros": {
+      "calories": 130,
+      "protein": 15,
+      "carbs": 10,
+      "fat": 2.5,
+      "fiber": 1
+    },
+    "ingredients": [
+      "1/2 cup cottage cheese (2% fat)",
+      "1/4 cup diced pineapple"
+    ]
+  },
+  {
+    "id": "m57",
+    "name": "Trail Mix",
+    "image": "images/trail-mix.jpg",
+    "category": "snack",
+    "macros": {
+      "calories": 170,
+      "protein": 6,
+      "carbs": 10,
+      "fat": 13,
+      "fiber": 3
+    },
+    "ingredients": [
+      "1 tbsp almonds",
+      "1 tbsp walnuts",
+      "1 tbsp pumpkin seeds",
+      "1 tbsp dried cranberries (no added sugar)"
+    ]
+  },
+  {
+    "id": "m58",
+    "name": "Rice Cakes with Avocado",
+    "image": "images/rice-cakes-with-avocado.jpg",
+    "category": "snack",
+    "macros": {
+      "calories": 160,
+      "protein": 3,
+      "carbs": 20,
+      "fat": 7,
+      "fiber": 4
+    },
+    "ingredients": [
+      "2 rice cakes",
+      "1/4 avocado, mashed",
+      "Pinch of salt",
+      "Red pepper flakes"
+    ]
+  },
+  {
+    "id": "m59",
+    "name": "Edamame",
+    "image": "images/edamame.jpg",
+    "category": "snack",
+    "macros": {
+      "calories": 120,
+      "protein": 10,
+      "carbs": 10,
+      "fat": 5,
+      "fiber": 5
+    },
+    "ingredients": [
+      "1/2 cup steamed edamame in pods",
+      "Pinch of sea salt"
+    ]
+  },
+  {
+    "id": "m60",
+    "name": "Protein Smoothie",
+    "image": "images/protein-smoothie.jpg",
+    "category": "snack",
+    "macros": {
+      "calories": 180,
+      "protein": 20,
+      "carbs": 15,
+      "fat": 3,
+      "fiber": 3
+    },
+    "ingredients": [
+      "1 scoop protein powder",
+      "1/2 banana",
+      "1/2 cup unsweetened almond milk",
+      "1/2 cup ice",
+      "1/4 tsp cinnamon"
+    ]
+  },
+  {
+    "id": "m61",
+    "name": "Turkey and Cheese Roll-Ups",
+    "image": "images/turkey-and-cheese-roll-ups.jpg",
+    "category": "snack",
+    "macros": {
+      "calories": 150,
+      "protein": 20,
+      "carbs": 2,
+      "fat": 7,
+      "fiber": 0
+    },
+    "ingredients": [
+      "2 oz sliced turkey breast",
+      "1 oz low-fat cheese",
+      "Few slices of cucumber"
+    ]
+  },
+  {
+    "id": "m62",
+    "name": "Roasted Chickpeas",
+    "image": "images/roasted-chickpeas.jpg",
+    "category": "snack",
+    "macros": {
+      "calories": 120,
+      "protein": 6,
+      "carbs": 15,
+      "fat": 3,
+      "fiber": 4
+    },
+    "ingredients": [
+      "1/4 cup chickpeas, roasted",
+      "1/2 tsp olive oil",
+      "1/4 tsp paprika",
+      "1/4 tsp cumin",
+      "Pinch of salt"
+    ]
+  },
+  {
+    "id": "m63",
+    "name": "Chia Pudding",
+    "image": "images/chia-pudding.jpg",
+    "category": "snack",
+    "macros": {
+      "calories": 100,
+      "protein": 3,
+      "carbs": 10,
+      "fat": 5,
+      "fiber": 4
+    },
+    "ingredients": [
+      "1 tbsp chia seeds",
+      "1/3 cup unsweetened almond milk",
+      "1/4 tsp vanilla extract",
+      "1 tsp honey"
+    ]
+  },
+  {
+    "id": "m64",
+    "name": "Homemade Energy Balls",
+    "image": "images/homemade-energy-balls.jpg",
+    "category": "snack",
+    "macros": {
+      "calories": 140,
+      "protein": 5,
+      "carbs": 12,
+      "fat": 8,
+      "fiber": 3
+    },
+    "ingredients": [
+      "1 tbsp oats",
+      "1 tbsp natural peanut butter",
+      "1 tsp honey",
+      "1 tsp dark chocolate chips",
+      "1/2 tbsp ground flaxseed"
+    ]
+  },
+  {
+    "id": "m65",
+    "name": "Tuna on Cucumber Slices",
+    "image": "images/tuna-on-cucumber-slices.jpg",
+    "category": "snack",
+    "macros": {
+      "calories": 110,
+      "protein": 15,
+      "carbs": 5,
+      "fat": 4,
+      "fiber": 2
+    },
+    "ingredients": [
+      "2 oz tuna in water",
+      "1/2 tbsp light mayonnaise",
+      "1/2 cucumber, sliced",
+      "Squeeze of lemon",
+      "Dash of dill"
+    ]
+  },
+  {
+    "id": "m66",
+    "name": "Baked Sweet Potato Chips",
+    "image": "images/baked-sweet-potato-chips.jpg",
+    "category": "snack",
+    "macros": {
+      "calories": 130,
+      "protein": 2,
+      "carbs": 25,
+      "fat": 2,
+      "fiber": 4
+    },
+    "ingredients": [
+      "1 small sweet potato, thinly sliced",
+      "1/2 tsp olive oil",
+      "Pinch of sea salt",
+      "Dash of paprika"
+    ]
+  },
+  {
+    "id": "m67",
+    "name": "Whole Grain Crackers with Cheese",
+    "image": "images/whole-grain-crackers-with-cheese.jpg",
+    "category": "snack",
+    "macros": {
+      "calories": 150,
+      "protein": 8,
+      "carbs": 15,
+      "fat": 7,
+      "fiber": 2
+    },
+    "ingredients": [
+      "4 whole grain crackers",
+      "1 oz low-fat cheese"
+    ]
+  },
+  {
+    "id": "m68",
+    "name": "Green Smoothie",
+    "image": "images/green-smoothie.jpg",
+    "category": "snack",
+    "macros": {
+      "calories": 140,
+      "protein": 10,
+      "carbs": 18,
+      "fat": 4,
+      "fiber": 5
+    },
+    "ingredients": [
+      "1 cup spinach",
+      "1/2 banana",
+      "1/2 cup unsweetened almond milk",
+      "1/4 cup Greek yogurt",
+      "1/2 tbsp chia seeds",
+      "Ice cubes"
+    ]
+  },
+  {
+    "id": "m69",
+    "name": "Bell Pepper with Guacamole",
+    "image": "images/bell-pepper-with-guacamole.jpg",
+    "category": "snack",
+    "macros": {
+      "calories": 120,
+      "protein": 2,
+      "carbs": 10,
+      "fat": 7,
+      "fiber": 5
+    },
+    "ingredients": [
+      "1 bell pepper, sliced",
+      "2 tbsp guacamole"
+    ]
+  },
+  {
+    "id": "m70",
+    "name": "Beef Jerky",
+    "image": "images/beef-jerky.jpg",
+    "category": "snack",
+    "macros": {
+      "calories": 80,
+      "protein": 15,
+      "carbs": 3,
+      "fat": 1,
+      "fiber": 0
+    },
+    "ingredients": [
+      "1 oz beef jerky (low sodium)"
+    ]
+  },
+  {
+    "id": "m71",
+    "name": "Celery with Peanut Butter",
+    "image": "images/celery-with-peanut-butter.jpg",
+    "category": "snack",
+    "macros": {
+      "calories": 110,
+      "protein": 4,
+      "carbs": 5,
+      "fat": 8,
+      "fiber": 2
+    },
+    "ingredients": [
+      "2 celery stalks",
+      "1 tbsp natural peanut butter"
+    ]
+  },
+  {
+    "id": "m72",
+    "name": "Caprese Skewers",
+    "image": "images/caprese-skewers.jpg",
+    "category": "snack",
+    "macros": {
+      "calories": 130,
+      "protein": 8,
+      "carbs": 5,
+      "fat": 9,
+      "fiber": 1
+    },
+    "ingredients": [
+      "5 cherry tomatoes",
+      "5 small mozzarella balls",
+      "Fresh basil leaves",
+      "1 tsp balsamic glaze",
+      "Pinch of salt"
+    ]
+  },
+  {
+    "id": "m73",
+    "name": "Smoked Salmon on Cucumber",
+    "image": "images/smoked-salmon-on-cucumber.jpg",
+    "category": "snack",
+    "macros": {
+      "calories": 120,
+      "protein": 10,
+      "carbs": 5,
+      "fat": 6,
+      "fiber": 1
+    },
+    "ingredients": [
+      "1 oz smoked salmon",
+      "1/2 cucumber, sliced",
+      "1 tbsp cream cheese (light)",
+      "Fresh dill",
+      "Squeeze of lemon"
+    ]
+  },
+  {
+    "id": "m74",
+    "name": "Kale Chips",
+    "image": "images/kale-chips.jpg",
+    "category": "snack",
+    "macros": {
+      "calories": 80,
+      "protein": 3,
+      "carbs": 10,
+      "fat": 3,
+      "fiber": 3
+    },
+    "ingredients": [
+      "2 cups kale, torn into pieces",
+      "1/2 tsp olive oil",
+      "Pinch of sea salt",
+      "1/4 tsp nutritional yeast (optional)"
+    ]
+  },
+  {
+    "id": "m75",
+    "name": "Berry and Nut Mix",
+    "image": "images/berry-and-nut-mix.jpg",
+    "category": "snack",
+    "macros": {
+      "calories": 150,
+      "protein": 5,
+      "carbs": 15,
+      "fat": 10,
+      "fiber": 3
+    },
+    "ingredients": [
+      "2 tbsp mixed nuts",
+      "2 tbsp dried berries (no added sugar)"
+    ]
+  },
+  {
+    "id": "m76",
+    "name": "Zucchini Sushi Rolls",
+    "image": "images/zucchini-sushi-rolls.jpg",
+    "category": "snack",
+    "macros": {
+      "calories": 160,
+      "protein": 12,
+      "carbs": 8,
+      "fat": 10,
+      "fiber": 4
+    },
+    "ingredients": [
+      "1 zucchini, sliced lengthwise thinly",
+      "1 oz smoked salmon or tuna",
+      "1/4 avocado, sliced",
+      "1 tbsp cream cheese (light)",
+      "1/2 tsp sesame seeds"
+    ]
+  },
+  {
+    "id": "m77",
+    "name": "Protein-Packed Black Bean Dip",
+    "image": "images/protein-packed-black-bean-dip.jpg",
+    "category": "snack",
+    "macros": {
+      "calories": 148,
+      "protein": 9,
+      "carbs": 22,
+      "fat": 2,
+      "fiber": 7
+    },
+    "ingredients": [
+      "1/2 cup black beans",
+      "1 tbsp Greek yogurt",
+      "1 tsp lime juice",
+      "1/4 tsp cumin",
+      "Veggie sticks (carrots, celery, bell peppers)"
+    ]
+  },
+  {
+    "id": "m78",
+    "name": "Spiced Roasted Chickpeas",
+    "image": "images/spiced-roasted-chickpeas.jpg",
+    "category": "snack",
+    "macros": {
+      "calories": 140,
+      "protein": 7,
+      "carbs": 18,
+      "fat": 5,
+      "fiber": 5
+    },
+    "ingredients": [
+      "1/3 cup chickpeas",
+      "1/2 tbsp olive oil",
+      "1/4 tsp cumin",
+      "1/4 tsp paprika",
+      "1/8 tsp cayenne pepper",
+      "Pinch of salt"
+    ]
+  },
+  {
+    "id": "m79",
+    "name": "Rice Cakes with Honey",
+    "image": "images/rice-cakes-with-honey.jpg",
+    "category": "snack",
+    "macros": {
+      "calories": 120,
+      "protein": 2,
+      "carbs": 28,
+      "fat": 0,
+      "fiber": 1
+    },
+    "ingredients": [
+      "2 rice cakes",
+      "1 tbsp honey",
+      "Dash of cinnamon"
+    ]
+  },
+  {
+    "id": "m80",
+    "name": "Watermelon Cubes with Mint",
+    "image": "images/watermelon-cubes-with-mint.jpg",
+    "category": "snack",
+    "macros": {
+      "calories": 50,
+      "protein": 1,
+      "carbs": 11,
+      "fat": 0,
+      "fiber": 1
+    },
+    "ingredients": [
+      "1 cup watermelon cubes",
+      "Fresh mint leaves",
+      "Squeeze of lime (optional)"
+    ]
+  }
+]
 }
