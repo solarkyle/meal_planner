@@ -1,0 +1,1900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Planner - Calendar View</title>
+    <link rel="icon" href="images/favicon.png" type="image/png">
+    <meta name="description" content="A simple meal planner for weekly meal preparation and macro tracking">
+    
+    <style>
+        /* Base styles */
+        :root {
+            --bg-color: #f5f5f5;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --border-color: #e5e7eb;
+            --highlight-color: #3b82f6;
+            --secondary-bg: #f3f4f6;
+            --danger-color: #ef4444;
+            --accent-color-1: #3b82f6;
+            --accent-color-2: #ef4444;
+            --accent-color-3: #f59e0b;
+            --accent-color-4: #10b981;
+        }
+        
+        /* Dark mode */
+        body.dark-mode {
+            --bg-color: #1a1a1a;
+            --card-bg: #2d2d2d;
+            --text-color: #e0e0e0;
+            --border-color: #4a4a4a;
+            --highlight-color: #4b93ff;
+            --secondary-bg: #3a3a3a;
+            --danger-color: #ff6b6b;
+        }
+        
+        /* Kawaii mode */
+        body.kawaii-mode {
+            --bg-color: #fff0f6;
+            --card-bg: #fff;
+            --text-color: #c94385;
+            --border-color: #ffafd2;
+            --highlight-color: #f783ac;
+            --secondary-bg: #fff0f8;
+            --danger-color: #ff8daf;
+            --accent-color-1: #f783ac;
+            --accent-color-2: #da77f2;
+            --accent-color-3: #9775fa;
+            --accent-color-4: #74c0fc;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            padding: 20px;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        h1, h2, h3 {
+            margin-bottom: 15px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .button {
+            background-color: var(--highlight-color);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-left: 10px;
+            margin-bottom: 5px;
+        }
+        .button-secondary {
+            background-color: var(--secondary-bg);
+            color: var(--text-color);
+        }
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+        }
+        
+        /* Theme toggles */
+        .theme-toggles {
+            display: flex;
+            gap: 10px;
+        }
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--border-color);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            color: var(--text-color);
+        }
+        .theme-toggle.active {
+            background-color: var(--highlight-color);
+            color: white;
+            border-color: var(--highlight-color);
+        }
+        
+        /* Meal repository styles */
+        .meal-repo {
+            height: 300px;
+            overflow-y: auto;
+        }
+        .search-container {
+            position: relative;
+            margin-bottom: 15px;
+        }
+        .search-container input {
+            width: 100%;
+            padding: 8px 8px 8px 35px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+        }
+        .search-icon {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-color);
+            opacity: 0.5;
+        }
+        .category-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+        .category-filter {
+            background-color: var(--secondary-bg);
+            border: none;
+            padding: 6px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            color: var(--text-color);
+        }
+        .category-filter.active {
+            background-color: var(--highlight-color);
+            color: white;
+        }
+        .meals-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+        }
+        .meal-card {
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            overflow: hidden;
+            cursor: grab;
+            background-color: var(--card-bg);
+        }
+        .meal-card img {
+            width: 100%;
+            height: 80px;
+            object-fit: cover;
+        }
+        .meal-card-body {
+            padding: 8px;
+        }
+        .meal-card h3 {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 5px;
+            color: var(--text-color);
+        }
+        .meal-card p {
+            font-size: 12px;
+            color: var(--text-color);
+            opacity: 0.7;
+        }
+        
+        /* Calendar styles */
+        .calendar-container {
+            overflow-x: auto;
+        }
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            min-width: 1000px;
+        }
+        .day-column {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: var(--card-bg);
+        }
+        .day-header {
+            background-color: var(--secondary-bg);
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+            font-weight: bold;
+        }
+        .macro-summary {
+            padding: 8px;
+            font-size: 12px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .macro-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 3px;
+        }
+        .macro-progress {
+            height: 6px;
+            background-color: var(--secondary-bg);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 2px;
+        }
+        .macro-progress-fill {
+            height: 100%;
+            border-radius: 3px;
+        }
+        .calories-fill {
+            background-color: var(--accent-color-1);
+        }
+        .protein-fill {
+            background-color: var(--accent-color-2);
+        }
+        .carbs-fill {
+            background-color: var(--accent-color-3);
+        }
+        .fat-fill {
+            background-color: var(--accent-color-4);
+        }
+        
+        .day-meals {
+            padding: 10px;
+        }
+        .meal-time {
+            margin-bottom: 10px;
+        }
+        .meal-time-label {
+            font-size: 12px;
+            font-weight: bold;
+            color: var(--text-color);
+            opacity: 0.7;
+            margin-bottom: 4px;
+        }
+        .meal-slot {
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            overflow: hidden;
+            min-height: 40px;
+            background-color: var(--card-bg);
+        }
+        .meal-slot-empty {
+            background-color: var(--secondary-bg);
+            border: 2px dashed var(--border-color);
+            padding: 10px;
+            text-align: center;
+            color: var(--text-color);
+            opacity: 0.7;
+            font-size: 12px;
+        }
+        .meal-slot-filled {
+            display: flex;
+            padding: 8px;
+        }
+        .meal-slot-filled img {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-right: 8px;
+        }
+        .meal-slot-info {
+            flex-grow: 1;
+            font-size: 12px;
+        }
+        .meal-slot-info h4 {
+            margin-bottom: 2px;
+            font-size: 12px;
+        }
+        .meal-slot-info p {
+            font-size: 10px;
+            color: var(--text-color);
+            opacity: 0.7;
+        }
+        .meal-slot-actions {
+            display: flex;
+            flex-direction: column;
+        }
+        .meal-slot-action {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 10px;
+            padding: 2px;
+            color: var(--text-color);
+        }
+        .meal-slot-action.remove {
+            color: var(--danger-color);
+        }
+        
+        /* Modal styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            display: none;
+        }
+        .modal {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            max-width: 500px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            border: 1px solid var(--border-color);
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .modal-body {
+            padding: 20px;
+        }
+        .modal-footer {
+            padding: 15px 20px;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+        
+        /* Form styles */
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+        }
+        .macros-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        
+        /* Meal detail styles */
+        .meal-detail-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .macro-box {
+            background-color: var(--secondary-bg);
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        .macro-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            text-align: center;
+        }
+        .macro-item p:first-child {
+            font-size: 12px;
+            margin-bottom: 5px;
+            color: var(--text-color);
+            opacity: 0.7;
+        }
+        .macro-item p:last-child {
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .ingredients-list {
+            list-style-position: inside;
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+        .ingredients-list li {
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
+        
+        /* Shopping list styles */
+        .shopping-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .shopping-item:last-child {
+            border-bottom: none;
+        }
+        .shopping-item input[type="checkbox"] {
+            width: auto;
+            margin-right: 10px;
+        }
+        .item-count {
+            margin-left: 10px;
+            font-size: 12px;
+            background-color: var(--secondary-bg);
+            padding: 2px 8px;
+            border-radius: 10px;
+            color: var(--text-color);
+        }
+        
+        /* Total macros section */
+        .total-macros {
+            display: flex;
+            gap: 15px;
+            padding: 10px 20px;
+            background-color: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .macro-total {
+            flex: 1;
+            min-width: 150px;
+        }
+        .macro-total h4 {
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: var(--text-color);
+            opacity: 0.7;
+        }
+        .macro-total p {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--text-color);
+        }
+        .macro-total .progress {
+            height: 8px;
+            background-color: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 5px;
+        }
+        .macro-total .progress-fill {
+            height: 100%;
+            border-radius: 4px;
+        }
+        
+        /* Custom images */
+        .kawaii-icon {
+            display: none;
+        }
+        body.kawaii-mode .kawaii-icon {
+            display: inline;
+            margin-right: 5px;
+            font-size: 16px;
+        }
+        
+        /* Add meal button */
+        .add-meal-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--highlight-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: none;
+            font-size: 20px;
+        }
+        
+        .meal-repo-header {
+            position: relative;
+        }
+        
+        /* Drag and drop styles */
+        .drag-over {
+            border: 2px dashed var(--highlight-color) !important;
+            background-color: rgba(59, 130, 246, 0.1) !important;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .meals-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .calendar {
+                min-width: 700px;
+            }
+            .macro-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .meals-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .button {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+            .header h1 {
+                font-size: 24px;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Meal Planner</h1>
+            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                <div class="theme-toggles">
+                    <button id="lightModeBtn" class="theme-toggle active">Light Mode</button>
+                    <button id="darkModeBtn" class="theme-toggle">Dark Mode</button>
+                    <button id="kawaiiModeBtn" class="theme-toggle">Pink Kawaii</button>
+                </div>
+                <div>
+                    <button id="exportMealsBtn" class="button button-secondary">Export Meals</button>
+                    <button id="importMealsBtn" class="button button-secondary">Import Meals</button>
+                    <button id="setMacrosBtn" class="button button-secondary">Set Macro Goals</button>
+                    <button id="shoppingListBtn" class="button">Shopping List</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Weekly Total Macros -->
+        <div class="total-macros">
+            <div class="macro-total">
+                <h4>Weekly Calories</h4>
+                <p id="totalCalories">0 / 14000</p>
+                <div class="progress">
+                    <div class="progress-fill calories-fill" id="totalCaloriesProgress" style="width: 0%"></div>
+                </div>
+            </div>
+            <div class="macro-total">
+                <h4>Weekly Protein</h4>
+                <p id="totalProtein">0g / 1050g</p>
+                <div class="progress">
+                    <div class="progress-fill protein-fill" id="totalProteinProgress" style="width: 0%"></div>
+                </div>
+            </div>
+            <div class="macro-total">
+                <h4>Weekly Carbs</h4>
+                <p id="totalCarbs">0g / 1400g</p>
+                <div class="progress">
+                    <div class="progress-fill carbs-fill" id="totalCarbsProgress" style="width: 0%"></div>
+                </div>
+            </div>
+            <div class="macro-total">
+                <h4>Weekly Fat</h4>
+                <p id="totalFat">0g / 455g</p>
+                <div class="progress">
+                    <div class="progress-fill fat-fill" id="totalFatProgress" style="width: 0%"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Weekly Calendar -->
+        <div class="calendar-container">
+            <div class="calendar" id="weeklyCalendar">
+                <!-- Days will be added here dynamically -->
+            </div>
+        </div>
+        
+        <!-- Meal Repository -->
+        <div class="card meal-repo">
+            <div class="meal-repo-header">
+                <h2><span class="kawaii-icon">🍭</span> Meal Repository</h2>
+                <button id="addMealBtn" class="add-meal-btn">+</button>
+            </div>
+            
+            <div class="search-container">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="searchMeals" placeholder="Search meals...">
+            </div>
+            
+            <div class="category-filters">
+                <button class="category-filter active" data-category="all">All</button>
+                <button class="category-filter" data-category="breakfast">Breakfast</button>
+                <button class="category-filter" data-category="lunch">Lunch</button>
+                <button class="category-filter" data-category="dinner">Dinner</button>
+                <button class="category-filter" data-category="snack">Snack</button>
+            </div>
+            
+            <div id="mealsGrid" class="meals-grid">
+                <!-- Meals will be added here dynamically -->
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal templates -->
+    
+    <!-- Meal Detail Modal -->
+    <div id="mealDetailModal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 id="detailMealName">Meal Name</h2>
+                <button class="close-modal">✕</button>
+            </div>
+            <div class="modal-body">
+                <img id="detailMealImage" src="" alt="Meal" class="meal-detail-image">
+                
+                <div class="macro-box">
+                    <h3>Macros</h3>
+                    <div class="macro-grid">
+                        <div class="macro-item">
+                            <p>Calories</p>
+                            <p id="detailMealCalories">0</p>
+                        </div>
+                        <div class="macro-item">
+                            <p>Protein</p>
+                            <p id="detailMealProtein">0g</p>
+                        </div>
+                        <div class="macro-item">
+                            <p>Carbs</p>
+                            <p id="detailMealCarbs">0g</p>
+                        </div>
+                        <div class="macro-item">
+                            <p>Fat</p>
+                            <p id="detailMealFat">0g</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3>Ingredients</h3>
+                <ul id="detailMealIngredients" class="ingredients-list">
+                    <!-- Ingredients will be added here dynamically -->
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button id="editMealBtn" class="button button-secondary">Edit</button>
+                <button id="deleteMealBtn" class="button" style="background-color: var(--danger-color);">Delete</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Add/Edit Meal Modal -->
+    <div id="mealFormModal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 id="mealFormTitle">Add Meal</h2>
+                <button class="close-modal">✕</button>
+            </div>
+            <div class="modal-body">
+                <form id="mealForm">
+                    <input type="hidden" id="mealId">
+                    <div class="form-group">
+                        <label for="mealName">Name</label>
+                        <input type="text" id="mealName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="mealCategory">Category</label>
+                        <select id="mealCategory">
+                            <option value="breakfast">Breakfast</option>
+                            <option value="lunch">Lunch</option>
+                            <option value="dinner">Dinner</option>
+                            <option value="snack">Snack</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <h3>Macros</h3>
+                        <div class="macros-grid">
+                            <div class="form-group">
+                                <label for="mealCalories">Calories</label>
+                                <input type="number" id="mealCalories" min="0">
+                            </div>
+                            <div class="form-group">
+                                <label for="mealProtein">Protein (g)</label>
+                                <input type="number" id="mealProtein" min="0">
+                            </div>
+                            <div class="form-group">
+                                <label for="mealCarbs">Carbs (g)</label>
+                                <input type="number" id="mealCarbs" min="0">
+                            </div>
+                            <div class="form-group">
+                                <label for="mealFat">Fat (g)</label>
+                                <input type="number" id="mealFat" min="0">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Ingredients</label>
+                        <div id="ingredientsContainer">
+                            <div class="form-group">
+                                <input type="text" class="ingredient-input" placeholder="e.g., 1 cup rice">
+                            </div>
+                        </div>
+                        <button type="button" id="addIngredientBtn" class="button button-secondary">Add Ingredient</button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="button button-secondary close-modal">Cancel</button>
+                <button type="button" id="saveMealBtn" class="button">Save Meal</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Macro Goals Modal -->
+    <div id="macroGoalsModal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Set Macro Goals</h2>
+                <button class="close-modal">✕</button>
+            </div>
+            <div class="modal-body">
+                <form id="macroGoalsForm">
+                    <div class="form-group">
+                        <label for="goalCalories">Daily Calories</label>
+                        <input type="number" id="goalCalories" min="0" value="2000">
+                    </div>
+                    <div class="form-group">
+                        <label for="goalProtein">Protein (g)</label>
+                        <input type="number" id="goalProtein" min="0" value="150">
+                    </div>
+                    <div class="form-group">
+                        <label for="goalCarbs">Carbs (g)</label>
+                        <input type="number" id="goalCarbs" min="0" value="200">
+                    </div>
+                    <div class="form-group">
+                        <label for="goalFat">Fat (g)</label>
+                        <input type="number" id="goalFat" min="0" value="65">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="button button-secondary close-modal">Cancel</button>
+                <button id="saveMacroGoalsBtn" class="button">Save Goals</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Shopping List Modal -->
+    <div id="shoppingListModal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Shopping List</h2>
+                <button class="close-modal">✕</button>
+            </div>
+            <div class="modal-body">
+                <div id="shoppingItems">
+                    <!-- Shopping items will be added here dynamically -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="exportShoppingListBtn" class="button">Export Shopping List</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Import Meals Modal -->
+    <div id="importMealsModal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Import Meals</h2>
+                <button class="close-modal">✕</button>
+            </div>
+            <div class="modal-body">
+                <p>Paste the JSON data from your exported meals:</p>
+                <div class="form-group">
+                    <textarea id="importMealsData" rows="10" placeholder="Paste JSON data here..."></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="button button-secondary close-modal">Cancel</button>
+                <button id="confirmImportBtn" class="button">Import</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        /**
+         * STORAGE MODULE
+         * Handles local storage operations for the meal planner app
+         */
+        
+        // Constants
+        const STORAGE_KEYS = {
+            WEEK_PLAN: 'mealPlanner_weekPlan',
+            MACRO_GOALS: 'mealPlanner_macroGoals',
+            THEME: 'mealPlanner_theme'
+        };
+        
+        /**
+         * Save the weekly meal plan to localStorage
+         * @param {Object} weekPlan - The week plan object to save
+         */
+        function saveWeekPlan(weekPlan) {
+            localStorage.setItem(STORAGE_KEYS.WEEK_PLAN, JSON.stringify(weekPlan));
+        }
+        
+        /**
+         * Load the weekly meal plan from localStorage
+         * @returns {Object} The week plan object or an empty object if none exists
+         */
+        function loadWeekPlan() {
+            const storedPlan = localStorage.getItem(STORAGE_KEYS.WEEK_PLAN);
+            return storedPlan ? JSON.parse(storedPlan) : {};
+        }
+        
+        /**
+         * Save the macro goals to localStorage
+         * @param {Object} macroGoals - The macro goals object to save
+         */
+        function saveMacroGoals(macroGoals) {
+            localStorage.setItem(STORAGE_KEYS.MACRO_GOALS, JSON.stringify(macroGoals));
+        }
+        
+        /**
+         * Load the macro goals from localStorage
+         * @returns {Object} The macro goals object or default values if none exists
+         */
+        function loadMacroGoals() {
+            const storedGoals = localStorage.getItem(STORAGE_KEYS.MACRO_GOALS);
+            if (storedGoals) {
+                return JSON.parse(storedGoals);
+            }
+            return {
+                calories: 2000,
+                protein: 150,
+                carbs: 200,
+                fat: 65
+            };
+        }
+        
+        /**
+         * Save the current theme to localStorage
+         * @param {string} theme - The theme to save ('light', 'dark', or 'kawaii')
+         */
+        function saveTheme(theme) {
+            localStorage.setItem(STORAGE_KEYS.THEME, theme);
+        }
+        
+        /**
+         * Load the theme from localStorage
+         * @returns {string} The theme ('light', 'dark', or 'kawaii') or 'light' if none exists
+         */
+        function loadTheme() {
+            return localStorage.getItem(STORAGE_KEYS.THEME) || 'light';
+        }
+        
+        /**
+         * Generate a placeholder image URL for meal cards
+         * @param {string} mealName - The name of the meal
+         * @param {string} category - The meal category
+         * @returns {string} The URL for the placeholder image
+         */
+        function getPlaceholderImage(mealName, category) {
+            // Encode the meal name for use in URL
+            const encodedName = encodeURIComponent(mealName);
+            
+            // Select background/foreground colors based on category
+            let bgColor, fgColor;
+            switch(category) {
+                case 'breakfast':
+                    bgColor = 'FFF5E6';
+                    fgColor = 'FF9933';
+                    break;
+                case 'lunch':
+                    bgColor = 'E6F5FF';
+                    fgColor = '0077CC';
+                    break;
+                case 'dinner':
+                    bgColor = 'FFE6E6';
+                    fgColor = 'CC0000';
+                    break;
+                case 'snack':
+                    bgColor = 'F2FFE6';
+                    fgColor = '66CC00';
+                    break;
+                case 'beverage':
+                    bgColor = 'E6FFFF';
+                    fgColor = '00AAAA';
+                    break;
+                default:
+                    bgColor = 'DEDEDE';
+                    fgColor = '555555';
+            }
+            
+            return `https://placeholder.pics/svg/300x200/${bgColor}/${fgColor}/${encodedName}`;
+        }
+        
+        /**
+         * Create a downloadable text file
+         * @param {string} content - The text content to download
+         * @param {string} filename - The name of the file
+         */
+        function downloadTextFile(content, filename) {
+            const element = document.createElement('a');
+            const file = new Blob([content], {type: 'text/plain'});
+            element.href = URL.createObjectURL(file);
+            element.download = filename;
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+        }
+        
+        /**
+         * Handle image loading errors by replacing with a placeholder
+         * @param {Event} event - The error event
+         */
+        function handleImageError(event) {
+            const img = event.target;
+            const mealName = img.alt || 'Meal';
+            
+            // Try to get category from data attribute or parent
+            let category = 'other';
+            if (img.dataset.category) {
+                category = img.dataset.category;
+            } else {
+                // Try to find category from parent meal card if available
+                const mealCard = img.closest('.meal-card');
+                if (mealCard && mealCard.dataset.category) {
+                    category = mealCard.dataset.category;
+                }
+            }
+            
+            img.src = getPlaceholderImage(mealName, category);
+        }
+        
+        /**
+         * MAIN APPLICATION LOGIC
+         */
+        
+        // Global variables
+        let meals = [];
+        let weekPlan = {};
+        let macroGoals = {
+            calories: 2000,
+            protein: 150,
+            carbs: 200,
+            fat: 65
+        };
+        
+        // Constants
+        const DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+        const MEAL_TIMES = ['breakfast', 'snack1', 'lunch', 'snack2', 'dinner'];
+        const MEAL_LABELS = {
+            breakfast: 'Breakfast',
+            snack1: 'Morning Snack',
+            lunch: 'Lunch',
+            snack2: 'Afternoon Snack',
+            dinner: 'Dinner'
+        };
+        
+        // DOM Elements
+        const mealsGrid = document.getElementById('mealsGrid');
+        const weeklyCalendar = document.getElementById('weeklyCalendar');
+        const searchInput = document.getElementById('searchMeals');
+        const categoryFilters = document.querySelectorAll('.category-filter');
+        
+        // Total macros elements
+        const totalCalories = document.getElementById('totalCalories');
+        const totalProtein = document.getElementById('totalProtein');
+        const totalCarbs = document.getElementById('totalCarbs');
+        const totalFat = document.getElementById('totalFat');
+        const totalCaloriesProgress = document.getElementById('totalCaloriesProgress');
+        const totalProteinProgress = document.getElementById('totalProteinProgress');
+        const totalCarbsProgress = document.getElementById('totalCarbsProgress');
+        const totalFatProgress = document.getElementById('totalFatProgress');
+        
+        // Modals
+        const mealDetailModal = document.getElementById('mealDetailModal');
+        const mealFormModal = document.getElementById('mealFormModal');
+        const macroGoalsModal = document.getElementById('macroGoalsModal');
+        const shoppingListModal = document.getElementById('shoppingListModal');
+        const importMealsModal = document.getElementById('importMealsModal');
+        
+        // Buttons
+        const addMealBtn = document.getElementById('addMealBtn');
+        const setMacrosBtn = document.getElementById('setMacrosBtn');
+        const shoppingListBtn = document.getElementById('shoppingListBtn');
+        const editMealBtn = document.getElementById('editMealBtn');
+        const deleteMealBtn = document.getElementById('deleteMealBtn');
+        const saveMealBtn = document.getElementById('saveMealBtn');
+        const saveMacroGoalsBtn = document.getElementById('saveMacroGoalsBtn');
+        const exportShoppingListBtn = document.getElementById('exportShoppingListBtn');
+        const addIngredientBtn = document.getElementById('addIngredientBtn');
+        const exportMealsBtn = document.getElementById('exportMealsBtn');
+        const importMealsBtn = document.getElementById('importMealsBtn');
+        const confirmImportBtn = document.getElementById('confirmImportBtn');
+        const closeModalBtns = document.querySelectorAll('.close-modal');
+        const lightModeBtn = document.getElementById('lightModeBtn');
+        const darkModeBtn = document.getElementById('darkModeBtn');
+        const kawaiiModeBtn = document.getElementById('kawaiiModeBtn');
+        
+        // Current states
+        let currentMeal = null;
+        let currentFilter = 'all';
+        let searchTerm = '';
+        
+        /**
+         * Initialize the app
+         */
+        function init() {
+            // Load data from storage
+            weekPlan = loadWeekPlan();
+            macroGoals = loadMacroGoals();
+            
+            // Load meals from JSON file
+            loadMealsFromJSON();
+            
+            // Apply saved theme
+            const savedTheme = loadTheme();
+            setTheme(savedTheme);
+            
+            // Set up event listeners
+            setupEventListeners();
+            
+            // Update kawaii emojis
+            updateKawaiiEmojis();
+        }
+        
+        /**
+         * Load meals from the JSON file
+         */
+        async function loadMealsFromJSON() {
+            try {
+                const response = await fetch('meals.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                const data = await response.json();
+                meals = data.meals || [];
+                
+                // After loading meals, render the UI
+                renderMeals();
+                renderCalendar();
+                updateTotalMacros();
+            } catch (error) {
+                console.error('Error loading meals:', error);
+                // Fall back to empty array if fetch fails
+                meals = [];
+                renderMeals();
+                renderCalendar();
+                updateTotalMacros();
+            }
+        }
+        
+        /**
+         * Update kawaii emojis
+         */
+        function updateKawaiiEmojis() {
+            if (document.body.classList.contains('kawaii-mode')) {
+                // Update meal slots
+                document.querySelectorAll('.meal-slot-empty').forEach(slot => {
+                    slot.textContent = '✨ Drag a meal here ✨';
+                });
+            } else {
+                document.querySelectorAll('.meal-slot-empty').forEach(slot => {
+                    slot.textContent = 'Drag a meal here';
+                });
+            }
+        }
+        
+        /**
+         * Render meal repository
+         */
+        function renderMeals() {
+            mealsGrid.innerHTML = '';
+            
+            // Filter meals
+            const filteredMeals = meals.filter(meal => {
+                const matchesSearch = meal.name.toLowerCase().includes(searchTerm.toLowerCase());
+                const matchesCategory = currentFilter === 'all' || meal.category === currentFilter;
+                return matchesSearch && matchesCategory;
+            });
+            
+            // Render each meal
+            filteredMeals.forEach(meal => {
+                const mealCard = document.createElement('div');
+                mealCard.className = 'meal-card';
+                mealCard.draggable = true;
+                mealCard.dataset.id = meal.id;
+                mealCard.dataset.category = meal.category;
+                
+                mealCard.innerHTML = `
+                    <img src="${meal.image}" alt="${meal.name}" data-category="${meal.category}">
+                    <div class="meal-card-body">
+                        <h3>${meal.name}</h3>
+                        <p>${meal.macros.calories} cal</p>
+                    </div>
+                `;
+                
+                mealCard.addEventListener('dragstart', (e) => {
+                    e.dataTransfer.setData('meal-id', meal.id);
+                });
+                
+                mealCard.addEventListener('click', () => {
+                    showMealDetail(meal);
+                });
+                
+                mealsGrid.appendChild(mealCard);
+            });
+            
+            // Add error handlers for images
+            setupImageErrorHandlers();
+        }
+        
+        /**
+         * Setup image error handlers for all meal images
+         */
+        function setupImageErrorHandlers() {
+            document.querySelectorAll('.meal-card img, .meal-slot-filled img, #detailMealImage')
+                .forEach(img => {
+                    img.onerror = handleImageError;
+                });
+        }
+        
+        /**
+         * Render calendar
+         */
+        function renderCalendar() {
+            weeklyCalendar.innerHTML = '';
+            
+            DAYS.forEach(day => {
+                const dayColumn = document.createElement('div');
+                dayColumn.className = 'day-column';
+                
+                // Day header
+                const dayHeader = document.createElement('div');
+                dayHeader.className = 'day-header';
+                dayHeader.textContent = day;
+                dayColumn.appendChild(dayHeader);
+                
+                // Macro summary
+                const macroSummary = document.createElement('div');
+                macroSummary.className = 'macro-summary';
+                
+                const dayTotals = calculateDayTotals(day);
+                
+                macroSummary.innerHTML = `
+                    <div class="macro-info">
+                        <span>Calories:</span>
+                        <span>${dayTotals.calories}/${macroGoals.calories}</span>
+                    </div>
+                    <div class="macro-progress">
+                        <div class="macro-progress-fill calories-fill" style="width: ${calculateMacroPercentage(day, 'calories')}%"></div>
+                    </div>
+                    
+                    <div class="macro-info">
+                        <span>Protein:</span>
+                        <span>${dayTotals.protein}g/${macroGoals.protein}g</span>
+                    </div>
+                    <div class="macro-progress">
+                        <div class="macro-progress-fill protein-fill" style="width: ${calculateMacroPercentage(day, 'protein')}%"></div>
+                    </div>
+                `;
+                
+                dayColumn.appendChild(macroSummary);
+                
+                // Meal slots
+                const dayMeals = document.createElement('div');
+                dayMeals.className = 'day-meals';
+                
+                MEAL_TIMES.forEach(mealTime => {
+                    const mealTimeSection = document.createElement('div');
+                    mealTimeSection.className = 'meal-time';
+                    
+                    const mealTimeLabel = document.createElement('div');
+                    mealTimeLabel.className = 'meal-time-label';
+                    
+                    // Add kawaii icons to meal labels in kawaii mode
+                    if (document.body.classList.contains('kawaii-mode')) {
+                        let icon = '';
+                        switch(mealTime) {
+                            case 'breakfast': icon = '🍳'; break;
+                            case 'snack1': icon = '🍎'; break;
+                            case 'lunch': icon = '🍱'; break;
+                            case 'snack2': icon = '🥤'; break;
+                            case 'dinner': icon = '🍽️'; break;
+                        }
+                        mealTimeLabel.innerHTML = `<span class="kawaii-icon">${icon}</span>${MEAL_LABELS[mealTime]}`;
+                    } else {
+                        mealTimeLabel.textContent = MEAL_LABELS[mealTime];
+                    }
+                    
+                    mealTimeSection.appendChild(mealTimeLabel);
+                    
+                    const mealSlot = document.createElement('div');
+                    mealSlot.className = 'meal-slot';
+                    mealSlot.setAttribute('data-day', day);
+                    mealSlot.setAttribute('data-meal-time', mealTime);
+                    
+                    const meal = weekPlan[day]?.[mealTime];
+                    
+                    if (meal) {
+                        mealSlot.className += ' meal-slot-filled';
+                        mealSlot.innerHTML = `
+                            <img src="${meal.image}" alt="${meal.name}" data-category="${meal.category}">
+                            <div class="meal-slot-info">
+                                <h4>${meal.name}</h4>
+                                <p>${meal.macros.calories} cal • ${meal.macros.protein}g protein</p>
+                            </div>
+                            <div class="meal-slot-actions">
+                                <button class="meal-slot-action view-meal" data-id="${meal.id}">👁️</button>
+                                <button class="meal-slot-action remove" data-day="${day}" data-meal-time="${mealTime}">✕</button>
+                            </div>
+                        `;
+                    } else {
+                        mealSlot.className += ' meal-slot-empty';
+                        mealSlot.textContent = document.body.classList.contains('kawaii-mode') ? 
+                            '✨ Drag a meal here ✨' : 'Drag a meal here';
+                    }
+                    
+                    // Make droppable
+                    mealSlot.addEventListener('dragover', (e) => {
+                        e.preventDefault();
+                        mealSlot.classList.add('drag-over');
+                    });
+                    
+                    mealSlot.addEventListener('dragleave', () => {
+                        mealSlot.classList.remove('drag-over');
+                    });
+                    
+                    mealSlot.addEventListener('drop', (e) => {
+                        e.preventDefault();
+                        mealSlot.classList.remove('drag-over');
+                        
+                        const mealId = e.dataTransfer.getData('meal-id');
+                        const meal = meals.find(m => m.id === mealId);
+                        
+                        if (meal) {
+                            addMealToPlan(day, mealTime, meal);
+                        }
+                    });
+                    
+                    mealTimeSection.appendChild(mealSlot);
+                    dayMeals.appendChild(mealTimeSection);
+                });
+                
+                dayColumn.appendChild(dayMeals);
+                weeklyCalendar.appendChild(dayColumn);
+            });
+            
+            // Add event listeners for remove buttons
+            document.querySelectorAll('.meal-slot-action.remove').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const day = btn.getAttribute('data-day');
+                    const mealTime = btn.getAttribute('data-meal-time');
+                    removeMealFromPlan(day, mealTime);
+                });
+            });
+            
+            // Add event listeners for view buttons
+            document.querySelectorAll('.view-meal').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const mealId = btn.getAttribute('data-id');
+                    const meal = meals.find(m => m.id === mealId);
+                    if (meal) {
+                        showMealDetail(meal);
+                    }
+                });
+            });
+            
+            // Setup image error handlers
+            setupImageErrorHandlers();
+        }
+        
+        /**
+         * Update total macros
+         */
+        function updateTotalMacros() {
+            const weekTotals = calculateWeekTotals();
+            const weeklyCalorieGoal = macroGoals.calories * 7;
+            const weeklyProteinGoal = macroGoals.protein * 7;
+            const weeklyCarbsGoal = macroGoals.carbs * 7;
+            const weeklyFatGoal = macroGoals.fat * 7;
+            
+            totalCalories.textContent = `${weekTotals.calories} / ${weeklyCalorieGoal}`;
+            totalProtein.textContent = `${weekTotals.protein}g / ${weeklyProteinGoal}g`;
+            totalCarbs.textContent = `${weekTotals.carbs}g / ${weeklyCarbsGoal}g`;
+            totalFat.textContent = `${weekTotals.fat}g / ${weeklyFatGoal}g`;
+            
+            const caloriePercentage = Math.min(Math.round((weekTotals.calories / weeklyCalorieGoal) * 100), 100);
+            const proteinPercentage = Math.min(Math.round((weekTotals.protein / weeklyProteinGoal) * 100), 100);
+            const carbsPercentage = Math.min(Math.round((weekTotals.carbs / weeklyCarbsGoal) * 100), 100);
+            const fatPercentage = Math.min(Math.round((weekTotals.fat / weeklyFatGoal) * 100), 100);
+            
+            totalCaloriesProgress.style.width = `${caloriePercentage}%`;
+            totalProteinProgress.style.width = `${proteinPercentage}%`;
+            totalCarbsProgress.style.width = `${carbsPercentage}%`;
+            totalFatProgress.style.width = `${fatPercentage}%`;
+        }
+        
+        /**
+         * Show meal detail
+         * @param {Object} meal - The meal object to show details for
+         */
+        function showMealDetail(meal) {
+            currentMeal = meal;
+            
+            document.getElementById('detailMealName').textContent = meal.name;
+            
+            const mealImage = document.getElementById('detailMealImage');
+            mealImage.src = meal.image;
+            mealImage.alt = meal.name;
+            mealImage.dataset.category = meal.category;
+            
+            document.getElementById('detailMealCalories').textContent = meal.macros.calories;
+            document.getElementById('detailMealProtein').textContent = `${meal.macros.protein}g`;
+            document.getElementById('detailMealCarbs').textContent = `${meal.macros.carbs}g`;
+            document.getElementById('detailMealFat').textContent = `${meal.macros.fat}g`;
+            
+            const ingredientsList = document.getElementById('detailMealIngredients');
+            ingredientsList.innerHTML = '';
+            
+            meal.ingredients.forEach(ingredient => {
+                const li = document.createElement('li');
+                li.textContent = ingredient;
+                ingredientsList.appendChild(li);
+            });
+            
+            mealDetailModal.style.display = 'flex';
+        }
+        
+        /**
+         * Show meal form
+         * @param {Object} meal - Optional meal object for editing
+         */
+        function showMealForm(meal = null) {
+            currentMeal = meal;
+            
+            document.getElementById('mealFormTitle').textContent = meal ? 'Edit Meal' : 'Add Meal';
+            document.getElementById('mealId').value = meal ? meal.id : `m${Date.now()}`;
+            document.getElementById('mealName').value = meal ? meal.name : '';
+            document.getElementById('mealCategory').value = meal ? meal.category : 'breakfast';
+            document.getElementById('mealCalories').value = meal ? meal.macros.calories : 0;
+            document.getElementById('mealProtein').value = meal ? meal.macros.protein : 0;
+            document.getElementById('mealCarbs').value = meal ? meal.macros.carbs : 0;
+            document.getElementById('mealFat').value = meal ? meal.macros.fat : 0;
+            
+            // Clear and populate ingredients
+            const ingredientsContainer = document.getElementById('ingredientsContainer');
+            ingredientsContainer.innerHTML = '';
+            
+            if (meal && meal.ingredients.length > 0) {
+                meal.ingredients.forEach(ingredient => {
+                    const div = document.createElement('div');
+                    div.className = 'form-group';
+                    div.innerHTML = `
+                        <input type="text" class="ingredient-input" value="${ingredient}" placeholder="e.g., 1 cup rice">
+                    `;
+                    ingredientsContainer.appendChild(div);
+                });
+            } else {
+                const div = document.createElement('div');
+                div.className = 'form-group';
+                div.innerHTML = `
+                    <input type="text" class="ingredient-input" placeholder="e.g., 1 cup rice">
+                `;
+                ingredientsContainer.appendChild(div);
+            }
+            
+            mealFormModal.style.display = 'flex';
+        }
+        
+        /**
+         * Show macro goals form
+         */
+        function showMacroGoalsForm() {
+            document.getElementById('goalCalories').value = macroGoals.calories;
+            document.getElementById('goalProtein').value = macroGoals.protein;
+            document.getElementById('goalCarbs').value = macroGoals.carbs;
+            document.getElementById('goalFat').value = macroGoals.fat;
+            
+            macroGoalsModal.style.display = 'flex';
+        }
+        
+        /**
+         * Show shopping list
+         */
+        function showShoppingList() {
+            const shoppingItems = document.getElementById('shoppingItems');
+            shoppingItems.innerHTML = '';
+            
+            const ingredients = collectIngredients();
+            
+            if (ingredients.length === 0) {
+                shoppingItems.innerHTML = '<p style="text-align: center; padding: 20px;">No meals added to your plan yet.</p>';
+            } else {
+                ingredients.forEach(ing => {
+                    const item = document.createElement('div');
+                    item.className = 'shopping-item';
+                    item.innerHTML = `
+                        <input type="checkbox">
+                        <span>${ing.item}</span>
+                        ${ing.count > 1 ? `<span class="item-count">x${ing.count}</span>` : ''}
+                    `;
+                    shoppingItems.appendChild(item);
+                });
+            }
+            
+            shoppingListModal.style.display = 'flex';
+        }
+        
+        /**
+         * Save meal
+         */
+        function saveMeal() {
+            const id = document.getElementById('mealId').value;
+            const name = document.getElementById('mealName').value;
+            const category = document.getElementById('mealCategory').value;
+            const calories = parseInt(document.getElementById('mealCalories').value) || 0;
+            const protein = parseInt(document.getElementById('mealProtein').value) || 0;
+            const carbs = parseInt(document.getElementById('mealCarbs').value) || 0;
+            const fat = parseInt(document.getElementById('mealFat').value) || 0;
+            
+            // Get ingredients
+            const ingredientInputs = document.querySelectorAll('.ingredient-input');
+            const ingredients = Array.from(ingredientInputs)
+                .map(input => input.value.trim())
+                .filter(value => value !== '');
+            
+            const mealData = {
+                id,
+                name,
+                image: currentMeal ? currentMeal.image : getPlaceholderImage(name, category),
+                category,
+                macros: { calories, protein, carbs, fat },
+                ingredients
+            };
+            
+            if (currentMeal) {
+                // Update existing meal
+                const index = meals.findIndex(m => m.id === id);
+                if (index !== -1) {
+                    meals[index] = mealData;
+                }
+                
+                // Update in weekly plan if it exists there
+                Object.keys(weekPlan).forEach(day => {
+                    Object.keys(weekPlan[day] || {}).forEach(mealTime => {
+                        if (weekPlan[day][mealTime]?.id === id) {
+                            weekPlan[day][mealTime] = mealData;
+                        }
+                    });
+                });
+            } else {
+                // Add new meal
+                meals.push(mealData);
+            }
+            
+            // Save weekly plan to localStorage
+            saveWeekPlan(weekPlan);
+            
+            renderMeals();
+            renderCalendar();
+            updateTotalMacros();
+            mealFormModal.style.display = 'none';
+            
+            // Alert user that the meal was saved
+            alert(`Meal "${name}" has been saved!\n\nNote: In this GitHub Pages version, new meals are only saved temporarily in localStorage. Edit the meals.json file to permanently add meals.`);
+        }
+        
+        /**
+         * Delete meal
+         */
+        function deleteMeal() {
+            if (!currentMeal) return;
+            
+            if (!confirm(`Are you sure you want to delete "${currentMeal.name}"?`)) {
+                return;
+            }
+            
+            // Remove from repository
+            meals = meals.filter(m => m.id !== currentMeal.id);
+            
+            // Remove from weekly plan
+            Object.keys(weekPlan).forEach(day => {
+                Object.keys(weekPlan[day] || {}).forEach(mealTime => {
+                    if (weekPlan[day][mealTime]?.id === currentMeal.id) {
+                        delete weekPlan[day][mealTime];
+                    }
+                });
+            });
+            
+            // Save weekly plan to localStorage
+            saveWeekPlan(weekPlan);
+            
+            renderMeals();
+            renderCalendar();
+            updateTotalMacros();
+            mealDetailModal.style.display = 'none';
+            
+            // Alert user that the meal was deleted
+            alert(`Meal "${currentMeal.name}" has been deleted!\n\nNote: In this GitHub Pages version, meal deletions are only temporary. Edit the meals.json file to permanently remove meals.`);
+        }
+        
+        /**
+         * Save macro goals
+         */
+        function saveMacroGoals() {
+            macroGoals = {
+                calories: parseInt(document.getElementById('goalCalories').value) || 2000,
+                protein: parseInt(document.getElementById('goalProtein').value) || 150,
+                carbs: parseInt(document.getElementById('goalCarbs').value) || 200,
+                fat: parseInt(document.getElementById('goalFat').value) || 65
+            };
+            
+            // Save macro goals to localStorage
+            saveMacroGoals(macroGoals);
+            
+            renderCalendar();
+            updateTotalMacros();
+            macroGoalsModal.style.display = 'none';
+        }
+        
+        /**
+         * Export meals to JSON
+         */
+        function exportMeals() {
+            const dataStr = JSON.stringify({ meals }, null, 2);
+            const dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
+            
+            const exportFileDefaultName = 'meals-data.json';
+            
+            const linkElement = document.createElement('a');
+            linkElement.setAttribute('href', dataUri);
+            linkElement.setAttribute('download', exportFileDefaultName);
+            document.body.appendChild(linkElement);
+            linkElement.click();
+            document.body.removeChild(linkElement);
+        }
+        
+        /**
+         * Import meals from JSON
+         */
+        function importMeals() {
+            importMealsModal.style.display = 'flex';
+        }
+        
+        /**
+         * Confirm meal import
+         */
+        function confirmMealImport() {
+            const jsonData = document.getElementById('importMealsData').value;
+            
+            try {
+                const importedData = JSON.parse(jsonData);
+                
+                if (importedData && Array.isArray(importedData.meals)) {
+                    // Validate imported meals
+                    const validMeals = importedData.meals.filter(meal => {
+                        return meal && meal.id && meal.name && meal.category && 
+                               meal.macros && typeof meal.macros === 'object' && 
+                               Array.isArray(meal.ingredients);
+                    });
+                    
+                    if (validMeals.length > 0) {
+                        meals = validMeals;
+                        renderMeals();
+                        renderCalendar();
+                        updateTotalMacros();
+                        importMealsModal.style.display = 'none';
+                        
+                        // Confirm import
+                        alert(`Successfully imported ${validMeals.length} meals!\n\nNote: In this GitHub Pages version, imported meals are only temporary. Edit the meals.json file to permanently add meals.`);
+                    } else {
+                        alert('No valid meals found in the imported data.');
+                    }
+                } else {
+                    alert('Invalid data format. Expected a JSON object with a "meals" array.');
+                }
+            } catch (error) {
+                alert('Error parsing JSON data. Please check the format and try again.');
+                console.error('Import error:', error);
+            }
+        }
+        
+        /**
+         * Export shopping list
+         */
+        function exportShoppingList() {
+            const ingredients = collectIngredients();
+            
+            if (ingredients.length === 0) {
+                alert('No items in your shopping list yet!');
+                return;
+            }
+            
+            let text = "SHOPPING LIST\n\n";
+            ingredients.forEach(ing => {
+                text += `□ ${ing.item}${ing.count > 1 ? ` (x${ing.count})` : ''}\n`;
+            });
+            
+            // Download the shopping list
+            downloadTextFile(text, "shopping_list.txt");
+            
+            shoppingListModal.style.display = 'none';
+        }
+        
+        /**
+         * Add meal to plan
+         * @param {string} day - The day to add the meal to
+         * @param {string} mealTime - The meal time to add the meal to
+         * @param {Object} meal - The meal object to add
+         */
+        function addMealToPlan(day, mealTime, meal) {
+            if (!weekPlan[day]) {
+                weekPlan[day] = {};
+            }
+            
+            weekPlan[day][mealTime] = { ...meal };
+            
+            // Save to localStorage
+            saveWeekPlan(weekPlan);
+            
+            renderCalendar();
+            updateTotalMacros();
+        }
+        
+        /**
+         * Remove meal from plan
+         * @param {string} day - The day to remove the meal from
+         * @param {string} mealTime - The meal time to remove the meal from
+         */
+        function removeMealFromPlan(day, mealTime) {
+            if (weekPlan[day] && weekPlan[day][mealTime]) {
+                delete weekPlan[day][mealTime];
+                
+                // Save to localStorage
+                saveWeekPlan(weekPlan);
+                
+                renderCalendar();
+                updateTotalMacros();
+            }
+        }
+        
+        /**
+         * Calculate day totals
+         * @param {string} day - The day to calculate totals for
+         * @returns {Object} The day's macro totals
+         */
+        function calculateDayTotals(day) {
+            const totals = { calories: 0, protein: 0, carbs: 0, fat: 0 };
+            
+            Object.values(weekPlan[day] || {}).forEach(meal => {
+                if (meal && meal.macros) {
+                    totals.calories += meal.macros.calories || 0;
+                    totals.protein += meal.macros.protein || 0;
+                    totals.carbs += meal.macros.carbs || 0;
+                    totals.fat += meal.macros.fat || 0;
+                }
+            });
+            
+            return totals;
+        }
+        
+        /**
+         * Calculate macro percentage
+         * @param {string} day - The day to calculate percentages for
+         * @param {string} macro - The macro to calculate percentage for
+         * @returns {number} The percentage of the macro goal
+         */
+        function calculateMacroPercentage(day, macro) {
+            const dayTotals = calculateDayTotals(day);
+            return Math.min(Math.round((dayTotals[macro] / macroGoals[macro]) * 100), 100);
+        }
+        
+        /**
+         * Calculate week totals
+         * @returns {Object} The week's macro totals
+         */
+        function calculateWeekTotals() {
+            const totals = { calories: 0, protein: 0, carbs: 0, fat: 0 };
+            
+            DAYS.forEach(day => {
+                const dayTotals = calculateDayTotals(day);
+                totals.calories += dayTotals.calories;
+                totals.protein += dayTotals.protein;
+                totals.carbs += dayTotals.carbs;
+                totals.fat += dayTotals.fat;
+            });
+            
+            return totals;
+        }
+        
+        /**
+         * Collect ingredients from plan
+         * @returns {Array} Array of ingredients with counts
+         */
+        function collectIngredients() {
+            const ingredients = [];
+            
+            Object.values(weekPlan).forEach(day => {
+                Object.values(day).forEach(meal => {
+                    if (meal && meal.ingredients) {
+                        ingredients.push(...meal.ingredients);
+                    }
+                });
+            });
+            
+            // Count occurrences of each ingredient
+            const counts = {};
+            ingredients.forEach(item => {
+                counts[item] = (counts[item] || 0) + 1;
+            });
+            
+            // Create sorted array of ingredients with counts
+            return Object.entries(counts)
+                .map(([item, count]) => ({ item, count }))
+                .sort((a, b) => a.item.localeCompare(b.item));
+        }
+        
+        /**
+         * Set the theme
+         * @param {string} theme - The theme to set ('light', 'dark', or 'kawaii')
+         */
+        function setTheme(theme) {
+            // Remove all theme classes
+            document.body.classList.remove('dark-mode', 'kawaii-mode');
+            
+            // Set active button
+            document.querySelectorAll('.theme-toggle').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Apply selected theme
+            if (theme === 'dark') {
+                document.body.classList.add('dark-mode');
+                darkModeBtn.classList.add('active');
+            } else if (theme === 'kawaii') {
+                document.body.classList.add('kawaii-mode');
+                kawaiiModeBtn.classList.add('active');
+            } else {
+                // Light mode (default)
+                lightModeBtn.classList.add('active');
+            }
+            
+            // Save theme to localStorage
+            saveTheme(theme);
+            
+            // Update kawaii emojis
+            updateKawaiiEmojis();
+            
+            // Re-render calendar to update kawaii elements
+            renderCalendar();
+        }
+        
+        /**
+         * Setup event listeners
+         */
+        function setupEventListeners() {
+            // Search input
+            searchInput.addEventListener('input', (e) => {
+                searchTerm = e.target.value;
+                renderMeals();
+            });
+            
+            // Category filters
+            categoryFilters.forEach(filter => {
+                filter.addEventListener('click', () => {
+                    categoryFilters.forEach(f => f.classList.remove('active'));
+                    filter.classList.add('active');
+                    currentFilter = filter.getAttribute('data-category');
+                    renderMeals();
+                });
+            });
+            
+            // Add meal button
+            addMealBtn.addEventListener('click', () => {
+                showMealForm();
+            });
+            
+            // Set macros button
+            setMacrosBtn.addEventListener('click', () => {
+                showMacroGoalsForm();
+            });
+            
+            // Shopping list button
+            shoppingListBtn.addEventListener('click', () => {
+                showShoppingList();
+            });
+            
+            // Edit meal button
+            editMealBtn.addEventListener('click', () => {
+                showMealForm(currentMeal);
+                mealDetailModal.style.display = 'none';
+            });
+            
+            // Delete meal button
+            deleteMealBtn.addEventListener('click', () => {
+                deleteMeal();
+            });
+            
+            // Save meal button
+            saveMealBtn.addEventListener('click', () => {
+                saveMeal();
+            });
+            
+            // Save macro goals button
+            saveMacroGoalsBtn.addEventListener('click', () => {
+                saveMacroGoals();
+            });
+            
+            // Export shopping list button
+            exportShoppingListBtn.addEventListener('click', () => {
+                exportShoppingList();
+            });
+            
+            // Add ingredient button
+            addIngredientBtn.addEventListener('click', () => {
+                const ingredientsContainer = document.getElementById('ingredientsContainer');
+                const div = document.createElement('div');
+                div.className = 'form-group';
+                div.innerHTML = `
+                    <input type="text" class="ingredient-input" placeholder="e.g., 1 cup rice">
+                `;
+                ingredientsContainer.appendChild(div);
+            });
+            
+            // Export meals button
+            exportMealsBtn.addEventListener('click', () => {
+                exportMeals();
+            });
+            
+            // Import meals button
+            importMealsBtn.addEventListener('click', () => {
+                importMeals();
+            });
+            
+            // Confirm import button
+            confirmImportBtn.addEventListener('click', () => {
+                confirmMealImport();
+            });
+            
+            // Theme toggle buttons
+            lightModeBtn.addEventListener('click', () => setTheme('light'));
+            darkModeBtn.addEventListener('click', () => setTheme('dark'));
+            kawaiiModeBtn.addEventListener('click', () => setTheme('kawaii'));
+            
+            // Close modal buttons
+            closeModalBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    mealDetailModal.style.display = 'none';
+                    mealFormModal.style.display = 'none';
+                    macroGoalsModal.style.display = 'none';
+                    shoppingListModal.style.display = 'none';
+                    importMealsModal.style.display = 'none';
+                });
+            });
+        }
+        
+        // Initialize the app when the DOM is loaded
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
